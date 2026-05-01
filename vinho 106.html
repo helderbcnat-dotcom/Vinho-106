@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wine Log - Minha Adega</title>
+    <style>
+        :root {
+            --vinho: #6b0d1e;
+            --bege: #fdfaf5;
+            --verde: #28a745;
+            --cinza: #6c757d;
+            --azul-dica: #e7f3fe;
+            --pix: #32bcad;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bege);
+            padding: 15px;
+            margin: 0;
+            color: #333;
+        }
+        #app-root {
+            max-width: 600px;
+            margin: auto;
+            padding-bottom: 50px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .dicas-panel {
+            background: var(--azul-dica);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border-left: 5px solid #2196F3;
+            font-size: 13px;
+        }
+        .dicas-panel h4 {
+            margin: 0 0 8px 0;
+            color: #0c5460;
+        }
+        .dicas-panel ul {
+            margin: 5px 0 0 0;
+            padding-left: 20px;
+        }
+        .dicas-panel li {
+            margin-bottom: 5px;
+        }
+        .pix-panel {
+            background: #e6f7f6;
+            border: 2px solid var(--pix);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 15px;
+            color: #268e83;
+            box-shadow: 0 2px 8px rgba(50, 188, 173, 0.2);
+        }
+        .pix-panel strong {
+            color: #1a635c;
+            font-size: 16px;
+        }
+        .row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+        .btn-save {
+            background: var(--vinho);
+            font-size: 16px;
+        }
+        .btn-sm {
+            padding: 6px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+        .btn-qty {
+            background: #eee;
+            color: #333;
+            border: 1px solid #ccc;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        .wine-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .wine-img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-right: 15px;
+            background: #f0f0f0;
+            border: 1px solid #eee;
+            flex-shrink: 0;
+        }
+        .wine-info {
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+        .destaque-aval {
+            background: #f9f2f4;
+            border-left: 3px solid var(--vinho);
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #555;
+            font-style: italic;
+        }
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-left: 10px;
+        }
+        .filter-panel {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .stats-bar {
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            color: var(--vinho);
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(107, 13, 30, 0.1);
+        }
+        .secondary-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .btn-alt {
+            background: var(--cinza);
+            font-size: 12px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-root"></div>
+    <script>
+        const DB_NAME = "adega_v6";
+        let fotoBase64 = "";
+
+        function montarInterface() {
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <h2 style="text-align: center; color: var(--vinho); margin-bottom: 15px;">🍷 Minha Adega</h2>
+                <div class="dicas-panel">
+                    <h4>💡 Dicas de Uso</h4>
+                    <ul>
+                        <li>Utilize o campo <strong>Avaliação</strong> para descrever o corpo, aromas e harmonização do vinho.</li>
+                        <li>No campo <strong>Local</strong>, use 'Estoque' para garrafas guardadas ou o nome do local onde degustou.</li>
+                        <li>Lembre-se de <strong>Exportar Backup</strong> após grandes inserções.</li>
+                    </ul>
+                </div>
+                <div class="pix-panel">
+                    💰 <strong>Doação para pix:</strong><br>
+                    <span style="font-size: 18px; letter-spacing: 1px;">45183732434</span><br>
+                    <small>(CPF)</small>
+                </div>
+                <div id="stats" class="stats-bar">Calculando estoque...</div>
+                <div class="card" id="form-area">
+                    <input type="hidden" id="wineId">
+                    <input type="text" id="nome" placeholder="Nome do Vinho (Obrigatório)">
+                    <input type="text" id="uva" placeholder="Uva">
+                    <input type="text" id="local" placeholder="Ex: Estoque, Restaurante tal, Casa de amigos...">
+                    <div class="row">
+                        <input type="number" id="safra" placeholder="Safra">
+                        <input type="number" id="valor" step="0.01" placeholder="R$ Unitário">
+                    </div>
+                    <div class="row">
+                        <input type="date" id="data">
+                        <input type="number" id="quantidade" placeholder="Qtd">
+                    </div>
+                    <textarea id="avaliacao" placeholder="📝 Avaliação: Descreva aromas, sabor, corpo ou com o que harmonizou..."></textarea>
+                    <select id="nota">
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
+                    </select>
+                    <input type="file" id="foto" accept="image/*">
+                    <button class="btn btn-save" id="btnMain" onclick="salvar()">GRAVAR VINHO</button>
+                    <button id="btnCancel" class="btn btn-alt" style="display:none; margin-top:8px;" onclick="limpar()">CANCELAR</button>
+                </div>
+                <div class="filter-panel">
+                    <input type="text" id="buscaTexto" placeholder="🔍 Buscar por nome, uva ou local..." onkeyup="carregar()">
+                    <div class="row" style="margin-top:10px;">
+                        <select id="filtroStatus" onchange="carregar()">
+                            <option value="todos">📋 Mostrar Todos</option>
+                            <option value="estoque">📦 Em Estoque</option>
+                            <option value="consumidos">🍷 Consumidos</option>
+                        </select>
+                        <select id="ordemLista" onchange="carregar()">
+                            <option value="dataDesc">Mais Recentes</option>
+                            <option value="dataAsc">Mais Antigos</option>
+                            <option value="notaDesc">Melhores Notas</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="lista"></div>
+                <div class="secondary-actions">
+                    <button class="btn btn-alt" onclick="exportarDados()">📥 Exportar Backup (TXT)</button>
+                    <button class="btn btn-alt" onclick="document.getElementById('importFile').click()">📤 Importar Backup (TXT)</button>
+                    <input type="file" id="importFile" style="display:none" accept=".txt" onchange="importarDados(event)">
+                </div>
+            `;
+            document.getElementById('foto').addEventListener('change', processarFoto);
+            limpar();
+            carregar();
+        }
+
+        function processarFoto(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const MAX = 400;
+                    let w = img.width, h = img.height;
+                    if (w > h) { if (w > MAX) { h *= MAX / w; w = MAX; } }
+                    else { if (h > MAX) { w *= MAX / h; h = MAX; } }
+                    canvas.width = w; canvas.height = h;
+                    canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+                    fotoBase64 = canvas.toDataURL("image/jpeg", 0.7);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function salvar() {
+            const nome = document.getElementById('nome').value.trim();
+            if (!nome) return alert("O nome é obrigatório!");
+            let vinhos = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            const id = document.getElementById('wineId').value;
+            const novo = {
+                id: id ? Number(id) : Date.now(),
+                nome: nome,
+                uva: document.getElementById('uva').value || "",
+                local: document.getElementById('local').value || "",
+                safra: document.getElementById('safra').value || "",
+                valor: parseFloat(document.getElementById('valor').value) || 0,
+                data: document.getElementById('data').value || new Date().toISOString().split('T')[0],
+                quantidade: parseInt(document.getElementById('quantidade').value) || 0,
+                nota: parseInt(document.getElementById('nota').value) || 5,
+                avaliacao: document.getElementById('avaliacao').value || "",
+                foto: fotoBase64
+            };
+            if (id) vinhos = vinhos.map(v => v.id === Number(id) ? novo : v);
+            else vinhos.push(novo);
+            localStorage.setItem(DB_NAME, JSON.stringify(vinhos));
+            limpar();
+            carregar();
+        }
+
+        function carregar() {
+            const listaDiv = document.getElementById('lista');
+            const busca = (document.getElementById('buscaTexto').value || "").toLowerCase();
+            const ordem = document.getElementById('ordemLista').value;
+            const status = document.getElementById('filtroStatus').value;
+            let vinhos = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            
+            const vinhosEmEstoque = vinhos.filter(v => (v.local || "").toLowerCase() === "estoque");
+            const totalQtd = vinhosEmEstoque.reduce((acc, v) => acc + (parseInt(v.quantidade) || 0), 0);
+            const totalValor = vinhosEmEstoque.reduce((acc, v) => acc + ((parseFloat(v.valor) || 0) * (parseInt(v.quantidade) || 0)), 0);
+            document.getElementById('stats').innerHTML = `<b>NO ESTOQUE:</b> ${totalQtd} un. | <b>VALOR TOTAL:</b> R$ ${totalValor.toFixed(2)}`;
+
+            vinhos.sort((a, b) => {
+                const d1 = new Date(a.data).getTime() || 0;
+                const d2 = new Date(b.data).getTime() || 0;
+                if (ordem === "dataDesc") return d2 - d1;
+                if (ordem === "dataAsc") return d1 - d2;
+                if (ordem === "notaDesc") return (b.nota || 0) - (a.nota || 0);
+                return b.id - a.id;
+            });
+
+            const filtrados = vinhos.filter(v => {
+                const textoBusca = ((v.nome || "") + (v.uva || "") + (v.local || "")).toLowerCase();
+                const matchesBusca = textoBusca.includes(busca);
+                
+                let matchesStatus = true;
+                const localLower = (v.local || "").toLowerCase();
+                if (status === "estoque") matchesStatus = (localLower === "estoque");
+                if (status === "consumidos") matchesStatus = (localLower !== "estoque");
+                
+                return matchesBusca && matchesStatus;
+            });
+
+            listaDiv.innerHTML = filtrados.length ? "" : "<p style='text-align:center; color:#999; margin-top:20px;'>Nenhum registro encontrado.</p>";
+            filtrados.forEach(v => {
+                const dataBR = v.data ? v.data.split('-').reverse().join('/') : "--/--/--";
+                const htmlAvaliacao = v.avaliacao ? `<div class="destaque-aval">"${v.avaliacao}"</div>` : "";
+                listaDiv.innerHTML += `
+                    <div class="wine-item">
+                        <img src="${v.foto || 'https://via.placeholder.com/70?text=Vinho'}" class="wine-img">
+                        <div class="wine-info">
+                            <strong>${v.nome}</strong><br>
+                            <small>${v.uva || ''} ${v.safra ? '| '+v.safra : ''}</small><br>
+                            <small style="color:var(--vinho)">${dataBR} | R$ ${(parseFloat(v.valor)||0).toFixed(2)}</small><br>
+                            <small>📍 ${v.local || 'Sem local'}</small>
+                            <div style="margin-top:5px;">
+                                <button class="btn-qty" onclick="ajustar(${v.id}, -1)">-</button>
+                                <span style="font-weight:bold; margin:0 8px;">${v.quantidade || 0}</span>
+                                <button class="btn-qty" onclick="ajustar(${v.id}, 1)">+</button>
+                                <span style="margin-left:10px;">${"⭐".repeat(v.nota || 0)}</span>
+                            </div>
+                            ${htmlAvaliacao}
+                        </div>
+                        <div class="actions">
+                            <button class="btn-sm" style="background:var(--verde)" onclick="prepararEdicao(${v.id})">Editar</button>
+                            <button class="btn-sm" style="background:#dc3545" onclick="excluir(${v.id})">Apagar</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function ajustar(id, delta) {
+            let v = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            v = v.map(x => {
+                if (x.id === id) x.quantidade = Math.max(0, (parseInt(x.quantidade) || 0) + delta);
+                return x;
+            });
+            localStorage.setItem(DB_NAME, JSON.stringify(v));
+            carregar();
+        }
+
+        function prepararEdicao(id) {
+            const vinhos = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            const v = vinhos.find(x => x.id === id);
+            if(!v) return;
+            document.getElementById('wineId').value = v.id;
+            document.getElementById('nome').value = v.nome;
+            document.getElementById('uva').value = v.uva || "";
+            document.getElementById('local').value = v.local || "";
+            document.getElementById('safra').value = v.safra || "";
+            document.getElementById('valor').value = v.valor || "";
+            document.getElementById('data').value = v.data || "";
+            document.getElementById('quantidade').value = v.quantidade || 0;
+            document.getElementById('nota').value = v.nota || 5;
+            document.getElementById('avaliacao').value = v.avaliacao || "";
+            fotoBase64 = v.foto || "";
+            document.getElementById('btnMain').innerText = "ATUALIZAR";
+            document.getElementById('btnCancel').style.display = "block";
+            window.scrollTo(0,0);
+        }
+
+        function excluir(id) {
+            if (!confirm("Excluir este vinho?")) return;
+            const v = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            localStorage.setItem(DB_NAME, JSON.stringify(v.filter(x => x.id !== id)));
+            carregar();
+        }
+
+        function limpar() {
+            document.getElementById('wineId').value = "";
+            document.getElementById('nome').value = "";
+            document.getElementById('uva').value = "";
+            document.getElementById('local').value = "";
+            document.getElementById('safra').value = "";
+            document.getElementById('valor').value = "";
+            document.getElementById('data').value = new Date().toISOString().split('T')[0];
+            document.getElementById('quantidade').value = "1";
+            document.getElementById('nota').value = "5";
+            document.getElementById('avaliacao').value = "";
+            fotoBase64 = "";
+            document.getElementById('btnMain').innerText = "GRAVAR VINHO";
+            document.getElementById('btnCancel').style.display = "none";
+        }
+
+        function exportarDados() {
+            const data = localStorage.getItem(DB_NAME);
+            if(!data || data === "[]") return alert("Sem dados.");
+            const b = new Blob([data], { type: "text/plain" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(b);
+            a.download = "backup_vinhos.txt";
+            a.click();
+        }
+
+        function importarDados(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const r = new FileReader();
+            r.onload = (x) => {
+                try {
+                    const json = JSON.parse(x.target.result);
+                    if(Array.isArray(json)) {
+                        localStorage.setItem(DB_NAME, x.target.result);
+                        carregar();
+                        alert("Backup Restaurado com Sucesso!");
+                    }
+                } catch(err) {
+                    alert("Erro: O arquivo TXT não contém um backup válido.");
+                }
+            };
+            r.readAsText(file);
+        }
+        window.onload = montarInterface;
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wine Log - Minha Adega</title>
+    <style>
+        :root {
+            --vinho: #6b0d1e;
+            --bege: #fdfaf5;
+            --verde: #28a745;
+            --cinza: #6c757d;
+            --azul-dica: #e7f3fe;
+            --pix: #32bcad;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bege);
+            padding: 15px;
+            margin: 0;
+            color: #333;
+        }
+        #app-root {
+            max-width: 600px;
+            margin: auto;
+            padding-bottom: 50px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .dicas-panel {
+            background: var(--azul-dica);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border-left: 5px solid #2196F3;
+            font-size: 13px;
+        }
+        .dicas-panel h4 {
+            margin: 0 0 8px 0;
+            color: #0c5460;
+        }
+        .dicas-panel ul {
+            margin: 5px 0 0 0;
+            padding-left: 20px;
+        }
+        .dicas-panel li {
+            margin-bottom: 5px;
+        }
+        .pix-panel {
+            background: #e6f7f6;
+            border: 2px solid var(--pix);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 15px;
+            color: #268e83;
+            box-shadow: 0 2px 8px rgba(50, 188, 173, 0.2);
+        }
+        .pix-panel strong {
+            color: #1a635c;
+            font-size: 16px;
+        }
+        .row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+        .btn-save {
+            background: var(--vinho);
+            font-size: 16px;
+        }
+        .btn-sm {
+            padding: 6px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+        .btn-qty {
+            background: #eee;
+            color: #333;
+            border: 1px solid #ccc;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        .wine-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .wine-img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-right: 15px;
+            background: #f0f0f0;
+            border: 1px solid #eee;
+            flex-shrink: 0;
+        }
+        .wine-info {
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+        .destaque-aval {
+            background: #f9f2f4;
+            border-left: 3px solid var(--vinho);
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #555;
+            font-style: italic;
+        }
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-left: 10px;
+        }
+        .filter-panel {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .stats-bar {
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            color: var(--vinho);
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(107, 13, 30, 0.1);
+        }
+        .secondary-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .btn-alt {
+            background: var(--cinza);
+            font-size: 12px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-root"></div>
+    <script>
+        const DB_NAME = "adega_v6";
+        let fotoBase64 = "";
+
+        function montarInterface() {
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <h2 style="text-align: center; color: var(--vinho); margin-bottom: 15px;">🍷 Minha Adega</h2>
+                <div class="dicas-panel">
+                    <h4>💡 Dicas de Uso</h4>
+                    <ul>
+                        <li>Utilize o campo <strong>Avaliação</strong> para descrever o corpo, aromas e harmonização do vinho.</li>
+                        <li>No campo <strong>Local</strong>, use 'Estoque' para garrafas guardadas ou o nome do local onde degustou.</li>
+                        <li>Lembre-se de <strong>Exportar Backup</strong> após grandes inserções.</li>
+                    </ul>
+                </div>
+                <div class="pix-panel">
+                    💰 <strong>Doação para pix:</strong><br>
+                    <span style="font-size: 18px; letter-spacing: 1px;">45183732434</span><br>
+                    <small>(CPF)</small>
+                </div>
+                <div id="stats" class="stats-bar">Calculando estoque...</div>
+                <div class="card" id="form-area">
+                    <input type="hidden" id="wineId">
+                    <input type="text" id="nome" placeholder="Nome do Vinho (Obrigatório)">
+                    <input type="text" id="uva" placeholder="Uva">
+                    <input type="text" id="local" placeholder="Ex: Estoque, Restaurante tal, Casa de amigos...">
+                    <div class="row">
+                        <input type="number" id="safra" placeholder="Safra">
+                        <input type="number" id="valor" step="0.01" placeholder="R$ Unitário">
+                    </div>
+                    <div class="row">
+                        <input type="date" id="data">
+                        <input type="number" id="quantidade" placeholder="Qtd">
+                    </div>
+                    <textarea id="avaliacao" placeholder="📝 Avaliação: Descreva aromas, sabor, corpo ou com o que harmonizou..."></textarea>
+                    <select id="nota">
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
+                    </select>
+                    <input type="file" id="foto" accept="image/*">
+                    <button class="btn btn-save" id="btnMain" onclick="salvar()">GRAVAR VINHO</button>
+                    <button id="btnCancel" class="btn btn-alt" style="display:none; margin-top:8px;" onclick="limpar()">CANCELAR</button>
+                </div>
+                <div class="filter-panel">
+                    <input type="text" id="buscaTexto" placeholder="🔍 Buscar por nome, uva ou local..." onkeyup="carregar()">
+                    <div class="row" style="margin-top:10px;">
+                        <select id="filtroStatus" onchange="carregar()">
+                            <option value="todos">📋 Mostrar Todos</option>
+                            <option value="estoque">📦 Em Estoque</option>
+                            <option value="consumidos">🍷 Consumidos</option>
+                        </select>
+                        <select id="ordemLista" onchange="carregar()">
+                            <option value="dataDesc">Mais Recentes</option>
+                            <option value="dataAsc">Mais Antigos</option>
+                            <option value="notaDesc">Melhores Notas</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="lista"></div>
+                <div class="secondary-actions">
+                    <button class="btn btn-alt" onclick="exportarDados()">📥 Exportar Backup (TXT)</button>
+                    <button class="btn btn-alt" onclick="document.getElementById('importFile').click()">📤 Importar Backup (TXT)</button>
+                    <input type="file" id="importFile" style="display:none" accept=".txt" onchange="importarDados(event)">
+                </div>
+            `;
+            document.getElementById('foto').addEventListener('change', processarFoto);
+            limpar();
+            carregar();
+        }
+
+        function processarFoto(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const MAX = 400;
+                    let w = img.width, h = img.height;
+                    if (w > h) { if (w > MAX) { h *= MAX / w; w = MAX; } }
+                    else { if (h > MAX) { w *= MAX / h; h = MAX; } }
+                    canvas.width = w; canvas.height = h;
+                    canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+                    fotoBase64 = canvas.toDataURL("image/jpeg", 0.7);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function salvar() {
+            const nome = document.getElementById('nome').value.trim();
+            if (!nome) return alert("O nome é obrigatório!");
+            let vinhos = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            const id = document.getElementById('wineId').value;
+            const novo = {
+                id: id ? Number(id) : Date.now(),
+                nome: nome,
+                uva: document.getElementById('uva').value || "",
+                local: document.getElementById('local').value || "",
+                safra: document.getElementById('safra').value || "",
+                valor: parseFloat(document.getElementById('valor').value) || 0,
+                data: document.getElementById('data').value || new Date().toISOString().split('T')[0],
+                quantidade: parseInt(document.getElementById('quantidade').value) || 0,
+                nota: parseInt(document.getElementById('nota').value) || 5,
+                avaliacao: document.getElementById('avaliacao').value || "",
+                foto: fotoBase64
+            };
+            if (id) vinhos = vinhos.map(v => v.id === Number(id) ? novo : v);
+            else vinhos.push(novo);
+            localStorage.setItem(DB_NAME, JSON.stringify(vinhos));
+            limpar();
+            carregar();
+        }
+
+        function carregar() {
+            const listaDiv = document.getElementById('lista');
+            const busca = (document.getElementById('buscaTexto').value || "").toLowerCase();
+            const ordem = document.getElementById('ordemLista').value;
+            const status = document.getElementById('filtroStatus').value;
+            let vinhos = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            
+            const vinhosEmEstoque = vinhos.filter(v => (v.local || "").toLowerCase() === "estoque");
+            const totalQtd = vinhosEmEstoque.reduce((acc, v) => acc + (parseInt(v.quantidade) || 0), 0);
+            const totalValor = vinhosEmEstoque.reduce((acc, v) => acc + ((parseFloat(v.valor) || 0) * (parseInt(v.quantidade) || 0)), 0);
+            document.getElementById('stats').innerHTML = `<b>NO ESTOQUE:</b> ${totalQtd} un. | <b>VALOR TOTAL:</b> R$ ${totalValor.toFixed(2)}`;
+
+            vinhos.sort((a, b) => {
+                const d1 = new Date(a.data).getTime() || 0;
+                const d2 = new Date(b.data).getTime() || 0;
+                if (ordem === "dataDesc") return d2 - d1;
+                if (ordem === "dataAsc") return d1 - d2;
+                if (ordem === "notaDesc") return (b.nota || 0) - (a.nota || 0);
+                return b.id - a.id;
+            });
+
+            const filtrados = vinhos.filter(v => {
+                const textoBusca = ((v.nome || "") + (v.uva || "") + (v.local || "")).toLowerCase();
+                const matchesBusca = textoBusca.includes(busca);
+                
+                let matchesStatus = true;
+                const localLower = (v.local || "").toLowerCase();
+                if (status === "estoque") matchesStatus = (localLower === "estoque");
+                if (status === "consumidos") matchesStatus = (localLower !== "estoque");
+                
+                return matchesBusca && matchesStatus;
+            });
+
+            listaDiv.innerHTML = filtrados.length ? "" : "<p style='text-align:center; color:#999; margin-top:20px;'>Nenhum registro encontrado.</p>";
+            filtrados.forEach(v => {
+                const dataBR = v.data ? v.data.split('-').reverse().join('/') : "--/--/--";
+                const htmlAvaliacao = v.avaliacao ? `<div class="destaque-aval">"${v.avaliacao}"</div>` : "";
+                listaDiv.innerHTML += `
+                    <div class="wine-item">
+                        <img src="${v.foto || 'https://via.placeholder.com/70?text=Vinho'}" class="wine-img">
+                        <div class="wine-info">
+                            <strong>${v.nome}</strong><br>
+                            <small>${v.uva || ''} ${v.safra ? '| '+v.safra : ''}</small><br>
+                            <small style="color:var(--vinho)">${dataBR} | R$ ${(parseFloat(v.valor)||0).toFixed(2)}</small><br>
+                            <small>📍 ${v.local || 'Sem local'}</small>
+                            <div style="margin-top:5px;">
+                                <button class="btn-qty" onclick="ajustar(${v.id}, -1)">-</button>
+                                <span style="font-weight:bold; margin:0 8px;">${v.quantidade || 0}</span>
+                                <button class="btn-qty" onclick="ajustar(${v.id}, 1)">+</button>
+                                <span style="margin-left:10px;">${"⭐".repeat(v.nota || 0)}</span>
+                            </div>
+                            ${htmlAvaliacao}
+                        </div>
+                        <div class="actions">
+                            <button class="btn-sm" style="background:var(--verde)" onclick="prepararEdicao(${v.id})">Editar</button>
+                            <button class="btn-sm" style="background:#dc3545" onclick="excluir(${v.id})">Apagar</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function ajustar(id, delta) {
+            let v = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            v = v.map(x => {
+                if (x.id === id) x.quantidade = Math.max(0, (parseInt(x.quantidade) || 0) + delta);
+                return x;
+            });
+            localStorage.setItem(DB_NAME, JSON.stringify(v));
+            carregar();
+        }
+
+        function prepararEdicao(id) {
+            const vinhos = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            const v = vinhos.find(x => x.id === id);
+            if(!v) return;
+            document.getElementById('wineId').value = v.id;
+            document.getElementById('nome').value = v.nome;
+            document.getElementById('uva').value = v.uva || "";
+            document.getElementById('local').value = v.local || "";
+            document.getElementById('safra').value = v.safra || "";
+            document.getElementById('valor').value = v.valor || "";
+            document.getElementById('data').value = v.data || "";
+            document.getElementById('quantidade').value = v.quantidade || 0;
+            document.getElementById('nota').value = v.nota || 5;
+            document.getElementById('avaliacao').value = v.avaliacao || "";
+            fotoBase64 = v.foto || "";
+            document.getElementById('btnMain').innerText = "ATUALIZAR";
+            document.getElementById('btnCancel').style.display = "block";
+            window.scrollTo(0,0);
+        }
+
+        function excluir(id) {
+            if (!confirm("Excluir este vinho?")) return;
+            const v = JSON.parse(localStorage.getItem(DB_NAME) || "[]");
+            localStorage.setItem(DB_NAME, JSON.stringify(v.filter(x => x.id !== id)));
+            carregar();
+        }
+
+        function limpar() {
+            document.getElementById('wineId').value = "";
+            document.getElementById('nome').value = "";
+            document.getElementById('uva').value = "";
+            document.getElementById('local').value = "";
+            document.getElementById('safra').value = "";
+            document.getElementById('valor').value = "";
+            document.getElementById('data').value = new Date().toISOString().split('T')[0];
+            document.getElementById('quantidade').value = "1";
+            document.getElementById('nota').value = "5";
+            document.getElementById('avaliacao').value = "";
+            fotoBase64 = "";
+            document.getElementById('btnMain').innerText = "GRAVAR VINHO";
+            document.getElementById('btnCancel').style.display = "none";
+        }
+
+        function exportarDados() {
+            const data = localStorage.getItem(DB_NAME);
+            if(!data || data === "[]") return alert("Sem dados.");
+            const b = new Blob([data], { type: "text/plain" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(b);
+            a.download = "backup_vinhos.txt";
+            a.click();
+        }
+
+        function importarDados(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const r = new FileReader();
+            r.onload = (x) => {
+                try {
+                    const json = JSON.parse(x.target.result);
+                    if(Array.isArray(json)) {
+                        localStorage.setItem(DB_NAME, x.target.result);
+                        carregar();
+                        alert("Backup Restaurado com Sucesso!");
+                    }
+                } catch(err) {
+                    alert("Erro: O arquivo TXT não contém um backup válido.");
+                }
+            };
+            r.readAsText(file);
+        }
+        window.onload = montarInterface;
+    </script>
+</body>
+</html>
