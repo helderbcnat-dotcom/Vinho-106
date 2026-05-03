@@ -175,7 +175,7 @@
                     <span onclick="setNota(4)">⭐</span>
                     <span onclick="setNota(5)">⭐</span>
                 </div>
-                <input type="hidden" id="nota" value="5">
+                <input type="hidden" id="nota" value="0">
             </div>
             <button class="btn-salvar" id="btnMain" onclick="salvar()">GRAVAR VINHO</button>
             <button class="btn-cancelar" id="btnCancel" style="display:none" onclick="limpar()">CANCELAR EDIÇÃO</button>
@@ -185,7 +185,72 @@
     <script>
         const DB_NAME = "adega_v6";
         let fotoBase64 = "";
-        let notaSel = 5;
+        let notaSel = 0;
+
+        // ── Lista de uvas conhecidas ──────────────────────────────────────────
+        const UVAS_CONHECIDAS = [
+            "malbec","cabernet sauvignon","cabernet franc","merlot","syrah","shiraz",
+            "tempranillo","sangiovese","nebbiolo","barbera","montepulciano","primitivo",
+            "grenache","garnacha","pinot noir","pinot gris","pinot grigio","chardonnay",
+            "sauvignon blanc","riesling","gewurztraminer","viognier","chenin blanc",
+            "touriga nacional","touriga franca","tinta roriz","trincadeira","alicante",
+            "aragonez","baga","castelão","alvarinho","loureiro","arinto","antão vaz",
+            "verdelho","encruzado","fernão pires","moscatel","carmenere","tannat",
+            "bonarda","torrontés","viura","albariño","godello","mencía","monastrell",
+            "nero d'avola","falanghina","fiano","greco","vermentino","pecorino",
+            "corvina","rondinella","molinara","glera","prosecco","muscat",
+            "zinfandel","petite sirah","mourvedre","carignan","cinsault",
+            "auxerrois","gamay","trousseau","poulsard","jacquère","roussanne",
+            "marsanne","clairette","bourboulenc","picpoul","rolle"
+        ];
+
+        // ── Lista de regiões conhecidas (fallback quando não achar uva) ────────
+        const REGIOES_CONHECIDAS = [
+            "douro","alentejo","dão","bairrada","vinho verde","lisboa","tejo","setúbal",
+            "chianti","barolo","barbaresco","brunello","amarone","valpolicella","soave",
+            "prosecco","franciacorta","rioja","ribera del duero","priorat","rías baixas",
+            "bordeaux","bourgogne","burgundy","champagne","alsace","rhône","loire",
+            "napa","sonoma","mendoza","maipo","colchagua","casablanca","uco valley",
+            "marlborough","hawke's bay","barossa","mclaren","coonawarra",
+            "mosel","rheingau","pfalz","württemberg","tokaj","primitivo di manduria",
+            "côtes du rhône","châteauneuf","saint-émilion","pomerol","médoc",
+            "minho","beiras","trás-os-montes","algarve","açores","madeira","porto"
+        ];
+
+        // ── Extrai uva/região e safra do texto OCR ────────────────────────────
+        function extrairDadosOcr(texto) {
+            const lower = texto.toLowerCase();
+
+            // Procura uva (prioridade)
+            let uvaEncontrada = "";
+            for (const uva of UVAS_CONHECIDAS) {
+                // Cria regex com word-boundary aproximado (aceita acentos)
+                const esc = uva.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const re = new RegExp('(?:^|[\\s,/\\-])' + esc + '(?:[\\s,/\\-]|$)', 'i');
+                if (re.test(lower)) { uvaEncontrada = uva; break; }
+            }
+
+            // Se não achou uva, procura região
+            if (!uvaEncontrada) {
+                for (const regiao of REGIOES_CONHECIDAS) {
+                    const esc = regiao.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    const re = new RegExp('(?:^|[\\s,/\\-])' + esc + '(?:[\\s,/\\-]|$)', 'i');
+                    if (re.test(lower)) { uvaEncontrada = regiao; break; }
+                }
+            }
+
+            // Capitaliza primeira letra de cada palavra
+            if (uvaEncontrada) {
+                uvaEncontrada = uvaEncontrada.replace(/\b\w/g, c => c.toUpperCase());
+            }
+
+            // Procura safra entre 2015 e 2030
+            let safraEncontrada = "";
+            const matchSafra = lower.match(/\b(201[5-9]|202[0-9]|2030)\b/);
+            if (matchSafra) safraEncontrada = matchSafra[1];
+
+            return { uva: uvaEncontrada, safra: safraEncontrada };
+        }
 
         function montarInterface() {
             const root = document.getElementById('app-root');
@@ -250,12 +315,16 @@
             return `<span style="color:#f0a500">${'⭐'.repeat(n)}</span><span style="opacity:0.2">${'⭐'.repeat(5-n)}</span>`;
         }
 
+        function hojeISO() {
+            return new Date().toISOString().split('T')[0];
+        }
+
         function abrirForm() {
+            limpar(); // garante defaults antes de abrir
             document.getElementById('modalBg').classList.add('on');
             document.getElementById('formTitulo').textContent = 'Adicionar Vinho';
             document.getElementById('btnCancel').style.display = 'none';
             document.getElementById('btnMain').textContent = 'GRAVAR VINHO';
-            setNota(5);
         }
 
         function fecharForm() {
@@ -307,6 +376,16 @@
                 const data = await resp.json();
                 const texto = (data?.ParsedResults?.[0]?.ParsedText || '').trim();
                 document.getElementById('overlay').classList.remove('on');
+
+                // ── Extrai uva e safra do texto ───────────────────────────────
+                const { uva, safra } = extrairDadosOcr(texto);
+                if (uva && !document.getElementById('uva').value) {
+                    document.getElementById('uva').value = uva;
+                }
+                if (safra && !document.getElementById('safra').value) {
+                    document.getElementById('safra').value = safra;
+                }
+
                 const linhas = texto.split('\n').map(l => l.trim()).filter(l => l.length > 1);
                 document.getElementById('ocrTexto').value = linhas.join('\n');
                 document.getElementById('ocrFotoPreview').src = urlFoto;
@@ -328,7 +407,13 @@
             if (nome) {
                 document.getElementById('nome').value = nome;
                 const st = document.getElementById('ocrStatus');
-                st.style.color = '#28a745'; st.textContent = '✅ Nome e foto salvos!';
+                st.style.color = '#28a745';
+                const extras = [];
+                if (document.getElementById('uva').value) extras.push('uva');
+                if (document.getElementById('safra').value) extras.push('safra');
+                st.textContent = extras.length
+                    ? `✅ Nome, foto${extras.length ? ', ' + extras.join(' e ') : ''} salvos!`
+                    : '✅ Nome e foto salvos!';
                 setTimeout(() => st.textContent = '', 3000);
             }
             fecharOcr();
@@ -346,7 +431,7 @@
                 local: document.getElementById('local').value || "",
                 safra: document.getElementById('safra').value || "",
                 valor: parseFloat(document.getElementById('valor').value) || 0,
-                data: document.getElementById('data').value || new Date().toISOString().split('T')[0],
+                data: document.getElementById('data').value || hojeISO(),
                 quantidade: parseInt(document.getElementById('quantidade').value) || 0,
                 nota: notaSel,
                 avaliacao: document.getElementById('avaliacao').value || "",
@@ -361,12 +446,17 @@
 
         function limpar() {
             ['wineId','nome','uva','local','safra','valor','avaliacao'].forEach(k => document.getElementById(k).value = '');
-            document.getElementById('data').value = new Date().toISOString().split('T')[0];
+            // FIX: sugere data atual e quantidade 1
+            document.getElementById('data').value = hojeISO();
             document.getElementById('quantidade').value = '1';
             document.getElementById('ocrStatus').textContent = '';
             const p = document.getElementById('fotoPreview');
             p.style.display = 'none'; p.src = '';
-            fotoBase64 = ''; setNota(5);
+            fotoBase64 = '';
+            // Reseta estrelas sem selecionar nenhuma por padrão
+            notaSel = 0;
+            document.getElementById('nota').value = '0';
+            document.querySelectorAll('#starsRow span').forEach(s => s.classList.remove('on'));
             document.getElementById('btnMain').textContent = 'GRAVAR VINHO';
             document.getElementById('btnCancel').style.display = 'none';
             document.getElementById('formTitulo').textContent = 'Adicionar Vinho';
@@ -386,7 +476,7 @@
             document.getElementById('avaliacao').value = v.avaliacao||'';
             fotoBase64 = v.foto||'';
             if (fotoBase64) { const p = document.getElementById('fotoPreview'); p.src = fotoBase64; p.style.display = 'block'; }
-            setNota(v.nota||5);
+            setNota(v.nota||0);
             document.getElementById('btnMain').textContent = 'ATUALIZAR';
             document.getElementById('btnCancel').style.display = 'block';
             document.getElementById('formTitulo').textContent = 'Editar Vinho';
@@ -403,7 +493,7 @@
             let v = JSON.parse(localStorage.getItem(DB_NAME)||"[]");
             const o = v.find(x => x.id === id);
             if (!o) return;
-            v.push(Object.assign({}, o, { id: Date.now(), data: new Date().toISOString().split('T')[0] }));
+            v.push(Object.assign({}, o, { id: Date.now(), data: hojeISO() }));
             localStorage.setItem(DB_NAME, JSON.stringify(v));
             carregar();
         }
@@ -421,15 +511,21 @@
             const status = document.getElementById('filtroStatus').value;
             let vinhos = JSON.parse(localStorage.getItem(DB_NAME)||"[]");
 
+            // ── Estatísticas ──────────────────────────────────────────────────
             const est = vinhos.filter(v => (v.local||"").toLowerCase()==="estoque");
             const tQ = est.reduce((a,v) => a+(parseInt(v.quantidade)||0), 0);
             const tV = est.reduce((a,v) => a+(parseFloat(v.valor)||0)*(parseInt(v.quantidade)||0), 0);
-            const comNota = vinhos.filter(v => v.nota > 0);
-            const media = comNota.length ? (comNota.reduce((a,v) => a+v.nota, 0)/comNota.length).toFixed(1) : '—';
-            document.getElementById('sQtd').textContent = tQ + ' garrafas';
-            document.getElementById('sNota').textContent = comNota.length ? media + ' ★' : '—';
-            document.getElementById('sValor').textContent = 'R$ ' + tV.toFixed(2);
 
+            // FIX: média — considera apenas vinhos com nota definida (nota > 0)
+            const comNota = vinhos.filter(v => v.nota && Number(v.nota) > 0);
+            const somaNotas = comNota.reduce((a,v) => a + Number(v.nota), 0);
+            const media = comNota.length ? (somaNotas / comNota.length).toFixed(1) : null;
+
+            document.getElementById('sQtd').textContent = tQ + ' garrafas';
+            document.getElementById('sNota').textContent = media ? media + ' ★' : '—';
+            document.getElementById('sValor').textContent = 'R$ ' + tV.toFixed(2).replace('.', ',');
+
+            // ── Ordenação ─────────────────────────────────────────────────────
             vinhos.sort((a,b) => {
                 const d1=new Date(a.data).getTime()||0, d2=new Date(b.data).getTime()||0;
                 if (ordem==="dataDesc") return d2-d1;
@@ -438,6 +534,7 @@
                 return b.id-a.id;
             });
 
+            // ── Filtros ───────────────────────────────────────────────────────
             const filtrados = vinhos.filter(v => {
                 const t = ((v.nome||"")+(v.uva||"")+(v.local||"")).toLowerCase();
                 const loc = (v.local||"").toLowerCase();
@@ -466,7 +563,7 @@
                             <div class="wine-stars">${renderStars(v.nota)}</div>
                             <div class="wine-meta">
                                 📍 ${v.local||'Sem local'} &nbsp;🗂 ${v.quantidade||0} un.<br>
-                                📅 ${dataBR} &nbsp;<span class="wine-valor">R$ ${(parseFloat(v.valor)||0).toFixed(2)}</span>
+                                📅 ${dataBR} &nbsp;<span class="wine-valor">R$ ${(parseFloat(v.valor)||0).toFixed(2).replace('.',',')}</span>
                             </div>
                             ${v.avaliacao ? `<div class="wine-aval">"${v.avaliacao}"</div>` : ''}
                             <div class="wine-qty">
