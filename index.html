@@ -1,1 +1,1138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🍷 Minha Adega</title>
+    <!-- Ícone do app — aparece para todos os usuários ao salvar na tela inicial -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPGRlZnM+CiAgICA8IS0tIEZ1bmRvIGdyYWRpZW50ZSB2aW5obyBlc2N1cm8gLS0+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM1YTBmMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM3YjFhMmUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2QwYTE0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgoKICAgIDwhLS0gR3JhZGllbnRlIGRhIHRhw6dhIC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ0YWNhR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmNWU2ZDA7c3RvcC1vcGFjaXR5OjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZDRiODk2O3N0b3Atb3BhY2l0eToxIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgoKICAgIDwhLS0gR3JhZGllbnRlIGRvIHZpbmhvIGRlbnRybyBkYSB0YcOnYSAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idmluaG9HcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjMwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojYzAzOTJiO3N0b3Atb3BhY2l0eTowLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzdiMWEyZTtzdG9wLW9wYWNpdHk6MC45NSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KCiAgICA8IS0tIEJyaWxobyBkYSB0YcOnYSAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYnJpbGhvR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eTowLjM1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmZmZmZjtzdG9wLW9wYWNpdHk6MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KCiAgICA8IS0tIEdyYWRpZW50ZSBkb3VyYWRvIHBhcmEgZGV0YWxoZXMgLS0+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im91cm9HcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2U4Yzg3YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6I2M5YTg0YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNhMDc4MzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPCEtLSBTb21icmEgc3VhdmUgLS0+CiAgICA8ZmlsdGVyIGlkPSJzb21icmEiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxMiIgZmxvb2QtY29sb3I9IiMwMDAwMDAiIGZsb29kLW9wYWNpdHk9IjAuNCIvPgogICAgPC9maWx0ZXI+CgogICAgPCEtLSBCcmlsaG8gaW50ZXJubyAtLT4KICAgIDxmaWx0ZXIgaWQ9ImJyaWxob0ludGVybm8iPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIzIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImJsdXIiIG9wZXJhdG9yPSJvdmVyIi8+CiAgICA8L2ZpbHRlcj4KCiAgICA8IS0tIENsaXAgcGFyYSBvIHZpbmhvIGRlbnRybyBkYSB0YcOnYSAtLT4KICAgIDxjbGlwUGF0aCBpZD0iY2xpcFZpbmhvIj4KICAgICAgPHBhdGggZD0iTSAxOTYgMTY1IFEgMjAwIDIzMCAyNTYgMjU4IFEgMzEyIDIzMCAzMTYgMTY1IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgoKICA8IS0tIEZ1bmRvIGFycmVkb25kYWRvIGVzdGlsbyDDrWNvbmUgYXBwIC0tPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEwIiByeT0iMTEwIiBmaWxsPSJ1cmwoI2JnR3JhZCkiLz4KCiAgPCEtLSBUZXh0dXJhIHN1dGlsIGRlIGZ1bmRvIOKAlCBsaW5oYXMgZGUgYWRlZ2EgLS0+CiAgPGcgb3BhY2l0eT0iMC4wNiIgc3Ryb2tlPSIjZjVlNmQwIiBzdHJva2Utd2lkdGg9IjEiPgogICAgPGxpbmUgeDE9IjAiIHkxPSIxMjgiIHgyPSI1MTIiIHkyPSIxMjgiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMjU2IiB4Mj0iNTEyIiB5Mj0iMjU2Ii8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjM4NCIgeDI9IjUxMiIgeTI9IjM4NCIvPgogIDwvZz4KCiAgPCEtLSBPcm5hbWVudG8gY2lyY3VsYXIgZG91cmFkbyBhdHLDoXMgZGEgdGHDp2EgLS0+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjIwIiByPSIxNDUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNvdXJvR3JhZCkiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyMjAiIHI9IjE1OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI291cm9HcmFkKSIgc3Ryb2tlLXdpZHRoPSIwLjgiIG9wYWNpdHk9IjAuMiIvPgoKICA8IS0tIOKVkOKVkOKVkCBUQcOHQSBERSBWSU5ITyDilZDilZDilZAgLS0+CiAgPCEtLSBDb3BhIGRhIHRhw6dhIChjb250b3JubyBleHRlcm5vKSAtLT4KICA8cGF0aCBkPSJNIDE4OCAxMTAgCiAgICAgICAgICAgTCAxOTYgMTY1IAogICAgICAgICAgIFEgMjAwIDI1MiAyNTYgMjc4IAogICAgICAgICAgIFEgMzEyIDI1MiAzMTYgMTY1IAogICAgICAgICAgIEwgMzI0IDExMCBaIgogICAgICAgIGZpbGw9InVybCgjdGFjYUdyYWQpIgogICAgICAgIGZpbHRlcj0idXJsKCNzb21icmEpIgogICAgICAgIG9wYWNpdHk9IjAuOTUiLz4KCiAgPCEtLSBWaW5obyBkZW50cm8gZGEgdGHDp2EgKG1ldGFkZSBpbmZlcmlvciBkYSBjb3BhKSAtLT4KICA8cGF0aCBkPSJNIDE5OCAxNzIgCiAgICAgICAgICAgUSAyMDIgMjQ1IDI1NiAyNzAgCiAgICAgICAgICAgUSAzMTAgMjQ1IDMxNCAxNzIgWiIKICAgICAgICBmaWxsPSJ1cmwoI3ZpbmhvR3JhZCkiCiAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBWaW5obykiLz4KCiAgPCEtLSBSZWZsZXhvL2JyaWxobyBuYSBzdXBlcmbDrWNpZSBkbyB2aW5obyAtLT4KICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMTcyIiByeD0iNTYiIHJ5PSI4IgogICAgICAgICAgIGZpbGw9IiNjMDM5MmIiIG9wYWNpdHk9IjAuNiIvPgogIDxlbGxpcHNlIGN4PSIyNDAiIGN5PSIxNzIiIHJ4PSIyOCIgcnk9IjQiCiAgICAgICAgICAgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgoKICA8IS0tIEJyaWxobyBsYXRlcmFsIGVzcXVlcmRvIGRhIHRhw6dhICh2aWRybykgLS0+CiAgPHBhdGggZD0iTSAxOTYgMTIwIFEgMjEwIDE2MCAyMTAgMjAwIFEgMjEwIDI0MCAyMjAgMjY1IgogICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNicmlsaG9HcmFkKSIgc3Ryb2tlLXdpZHRoPSI4IgogICAgICAgIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC43Ii8+CgogIDwhLS0gQnJpbGhvIG1lbm9yIC0tPgogIDxwYXRoIGQ9Ik0gMjAyIDEzMCBRIDIxMiAxNTUgMjEzIDE4MCIKICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIKICAgICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCIvPgoKICA8IS0tIExpbmhhIGRlIHNlcGFyYcOnw6NvIGNvcGEvaGFzdGUgKGFuZWwgZGEgdGHDp2EpIC0tPgogIDxlbGxpcHNlIGN4PSIyNTYiIGN5PSIyNzgiIHJ4PSIyOCIgcnk9IjciCiAgICAgICAgICAgZmlsbD0idXJsKCN0YWNhR3JhZCkiIG9wYWNpdHk9IjAuOSIvPgoKICA8IS0tIEhhc3RlIGRhIHRhw6dhIC0tPgogIDxyZWN0IHg9IjI0OSIgeT0iMjc4IiB3aWR0aD0iMTQiIGhlaWdodD0iOTgiCiAgICAgICAgZmlsbD0idXJsKCN0YWNhR3JhZCkiIHJ4PSI3IiBvcGFjaXR5PSIwLjkiLz4KCiAgPCEtLSBCYXNlIGRhIHRhw6dhIC0tPgogIDxlbGxpcHNlIGN4PSIyNTYiIGN5PSIzODAiIHJ4PSI3MiIgcnk9IjE0IgogICAgICAgICAgIGZpbGw9InVybCgjdGFjYUdyYWQpIiBvcGFjaXR5PSIwLjk1Ii8+CiAgPCEtLSBFc3Blc3N1cmEgZGEgYmFzZSAtLT4KICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMzc2IiByeD0iNzIiIHJ5PSIxMCIKICAgICAgICAgICBmaWxsPSJ1cmwoI3RhY2FHcmFkKSIgb3BhY2l0eT0iMC42Ii8+CgogIDwhLS0gQnJpbGhvIG5hIGJhc2UgLS0+CiAgPGVsbGlwc2UgY3g9IjIzMiIgY3k9IjM3NiIgcng9IjIyIiByeT0iNCIKICAgICAgICAgICBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjE4Ii8+CgogIDwhLS0g4pWQ4pWQ4pWQIFBJTkdPIC8gR09UQSBkZSB2aW5obyDilZDilZDilZAgLS0+CiAgPGNpcmNsZSBjeD0iMzA0IiBjeT0iMjI2IiByPSI2IgogICAgICAgICAgZmlsbD0iI2U3NGMzYyIgb3BhY2l0eT0iMC44NSIvPgogIDxlbGxpcHNlIGN4PSIzMDQiIGN5PSIyMjYiIHJ4PSIyIiByeT0iMSIKICAgICAgICAgICBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjQiLz4KCiAgPCEtLSDilZDilZDilZAgVEVYVE8gIk1BIiBlc3RpbGl6YWRvIGVtIGJhaXhvIOKVkOKVkOKVkCAtLT4KICA8IS0tIExpbmhhIGRvdXJhZGEgZGVjb3JhdGl2YSBhY2ltYSBkbyB0ZXh0byAtLT4KICA8bGluZSB4MT0iMTU2IiB5MT0iNDE4IiB4Mj0iMzU2IiB5Mj0iNDE4IgogICAgICAgIHN0cm9rZT0idXJsKCNvdXJvR3JhZCkiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CgogIDx0ZXh0IHg9IjI1NiIgeT0iNDUyIgogICAgICAgIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSIzOCIKICAgICAgICBmb250LXdlaWdodD0iNzAwIgogICAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiCiAgICAgICAgbGV0dGVyLXNwYWNpbmc9IjgiCiAgICAgICAgZmlsbD0idXJsKCNvdXJvR3JhZCkiCiAgICAgICAgb3BhY2l0eT0iMC45MiI+QURFR0E8L3RleHQ+CgogIDwhLS0gTGluaGEgZG91cmFkYSBkZWNvcmF0aXZhIGFiYWl4byBkbyB0ZXh0byAtLT4KICA8bGluZSB4MT0iMTc2IiB5MT0iNDYyIiB4Mj0iMzM2IiB5Mj0iNDYyIgogICAgICAgIHN0cm9rZT0idXJsKCNvdXJvR3JhZCkiIHN0cm9rZS13aWR0aD0iMC44IiBvcGFjaXR5PSIwLjQiLz4KCiAgPCEtLSBSZWZsZXhvIHN1dGlsIG5vIGZ1bmRvIChjw61yY3VsbyBkZSBsdXopIC0tPgogIDxyYWRpYWxHcmFkaWVudCBpZD0ibHV6RnVuZG8iIGN4PSIzMCUiIGN5PSIyMCUiIHI9IjYwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eTowLjA2Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmZmZmY7c3RvcC1vcGFjaXR5OjAiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEwIiByeT0iMTEwIiBmaWxsPSJ1cmwoI2x1ekZ1bmRvKSIvPgo8L3N2Zz4K">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPGRlZnM+CiAgICA8IS0tIEZ1bmRvIGdyYWRpZW50ZSB2aW5obyBlc2N1cm8gLS0+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM1YTBmMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM3YjFhMmUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2QwYTE0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgoKICAgIDwhLS0gR3JhZGllbnRlIGRhIHRhw6dhIC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ0YWNhR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmNWU2ZDA7c3RvcC1vcGFjaXR5OjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZDRiODk2O3N0b3Atb3BhY2l0eToxIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgoKICAgIDwhLS0gR3JhZGllbnRlIGRvIHZpbmhvIGRlbnRybyBkYSB0YcOnYSAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idmluaG9HcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjMwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojYzAzOTJiO3N0b3Atb3BhY2l0eTowLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzdiMWEyZTtzdG9wLW9wYWNpdHk6MC45NSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KCiAgICA8IS0tIEJyaWxobyBkYSB0YcOnYSAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYnJpbGhvR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eTowLjM1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmZmZmZjtzdG9wLW9wYWNpdHk6MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KCiAgICA8IS0tIEdyYWRpZW50ZSBkb3VyYWRvIHBhcmEgZGV0YWxoZXMgLS0+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im91cm9HcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2U4Yzg3YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6I2M5YTg0YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNhMDc4MzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPCEtLSBTb21icmEgc3VhdmUgLS0+CiAgICA8ZmlsdGVyIGlkPSJzb21icmEiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxMiIgZmxvb2QtY29sb3I9IiMwMDAwMDAiIGZsb29kLW9wYWNpdHk9IjAuNCIvPgogICAgPC9maWx0ZXI+CgogICAgPCEtLSBCcmlsaG8gaW50ZXJubyAtLT4KICAgIDxmaWx0ZXIgaWQ9ImJyaWxob0ludGVybm8iPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIzIiByZXN1bHQ9ImJsdXIiLz4KICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImJsdXIiIG9wZXJhdG9yPSJvdmVyIi8+CiAgICA8L2ZpbHRlcj4KCiAgICA8IS0tIENsaXAgcGFyYSBvIHZpbmhvIGRlbnRybyBkYSB0YcOnYSAtLT4KICAgIDxjbGlwUGF0aCBpZD0iY2xpcFZpbmhvIj4KICAgICAgPHBhdGggZD0iTSAxOTYgMTY1IFEgMjAwIDIzMCAyNTYgMjU4IFEgMzEyIDIzMCAzMTYgMTY1IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgoKICA8IS0tIEZ1bmRvIGFycmVkb25kYWRvIGVzdGlsbyDDrWNvbmUgYXBwIC0tPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEwIiByeT0iMTEwIiBmaWxsPSJ1cmwoI2JnR3JhZCkiLz4KCiAgPCEtLSBUZXh0dXJhIHN1dGlsIGRlIGZ1bmRvIOKAlCBsaW5oYXMgZGUgYWRlZ2EgLS0+CiAgPGcgb3BhY2l0eT0iMC4wNiIgc3Ryb2tlPSIjZjVlNmQwIiBzdHJva2Utd2lkdGg9IjEiPgogICAgPGxpbmUgeDE9IjAiIHkxPSIxMjgiIHgyPSI1MTIiIHkyPSIxMjgiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMjU2IiB4Mj0iNTEyIiB5Mj0iMjU2Ii8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjM4NCIgeDI9IjUxMiIgeTI9IjM4NCIvPgogIDwvZz4KCiAgPCEtLSBPcm5hbWVudG8gY2lyY3VsYXIgZG91cmFkbyBhdHLDoXMgZGEgdGHDp2EgLS0+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjIwIiByPSIxNDUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNvdXJvR3JhZCkiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyMjAiIHI9IjE1OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI291cm9HcmFkKSIgc3Ryb2tlLXdpZHRoPSIwLjgiIG9wYWNpdHk9IjAuMiIvPgoKICA8IS0tIOKVkOKVkOKVkCBUQcOHQSBERSBWSU5ITyDilZDilZDilZAgLS0+CiAgPCEtLSBDb3BhIGRhIHRhw6dhIChjb250b3JubyBleHRlcm5vKSAtLT4KICA8cGF0aCBkPSJNIDE4OCAxMTAgCiAgICAgICAgICAgTCAxOTYgMTY1IAogICAgICAgICAgIFEgMjAwIDI1MiAyNTYgMjc4IAogICAgICAgICAgIFEgMzEyIDI1MiAzMTYgMTY1IAogICAgICAgICAgIEwgMzI0IDExMCBaIgogICAgICAgIGZpbGw9InVybCgjdGFjYUdyYWQpIgogICAgICAgIGZpbHRlcj0idXJsKCNzb21icmEpIgogICAgICAgIG9wYWNpdHk9IjAuOTUiLz4KCiAgPCEtLSBWaW5obyBkZW50cm8gZGEgdGHDp2EgKG1ldGFkZSBpbmZlcmlvciBkYSBjb3BhKSAtLT4KICA8cGF0aCBkPSJNIDE5OCAxNzIgCiAgICAgICAgICAgUSAyMDIgMjQ1IDI1NiAyNzAgCiAgICAgICAgICAgUSAzMTAgMjQ1IDMxNCAxNzIgWiIKICAgICAgICBmaWxsPSJ1cmwoI3ZpbmhvR3JhZCkiCiAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBWaW5obykiLz4KCiAgPCEtLSBSZWZsZXhvL2JyaWxobyBuYSBzdXBlcmbDrWNpZSBkbyB2aW5obyAtLT4KICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMTcyIiByeD0iNTYiIHJ5PSI4IgogICAgICAgICAgIGZpbGw9IiNjMDM5MmIiIG9wYWNpdHk9IjAuNiIvPgogIDxlbGxpcHNlIGN4PSIyNDAiIGN5PSIxNzIiIHJ4PSIyOCIgcnk9IjQiCiAgICAgICAgICAgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgoKICA8IS0tIEJyaWxobyBsYXRlcmFsIGVzcXVlcmRvIGRhIHRhw6dhICh2aWRybykgLS0+CiAgPHBhdGggZD0iTSAxOTYgMTIwIFEgMjEwIDE2MCAyMTAgMjAwIFEgMjEwIDI0MCAyMjAgMjY1IgogICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNicmlsaG9HcmFkKSIgc3Ryb2tlLXdpZHRoPSI4IgogICAgICAgIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC43Ii8+CgogIDwhLS0gQnJpbGhvIG1lbm9yIC0tPgogIDxwYXRoIGQ9Ik0gMjAyIDEzMCBRIDIxMiAxNTUgMjEzIDE4MCIKICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIKICAgICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCIvPgoKICA8IS0tIExpbmhhIGRlIHNlcGFyYcOnw6NvIGNvcGEvaGFzdGUgKGFuZWwgZGEgdGHDp2EpIC0tPgogIDxlbGxpcHNlIGN4PSIyNTYiIGN5PSIyNzgiIHJ4PSIyOCIgcnk9IjciCiAgICAgICAgICAgZmlsbD0idXJsKCN0YWNhR3JhZCkiIG9wYWNpdHk9IjAuOSIvPgoKICA8IS0tIEhhc3RlIGRhIHRhw6dhIC0tPgogIDxyZWN0IHg9IjI0OSIgeT0iMjc4IiB3aWR0aD0iMTQiIGhlaWdodD0iOTgiCiAgICAgICAgZmlsbD0idXJsKCN0YWNhR3JhZCkiIHJ4PSI3IiBvcGFjaXR5PSIwLjkiLz4KCiAgPCEtLSBCYXNlIGRhIHRhw6dhIC0tPgogIDxlbGxpcHNlIGN4PSIyNTYiIGN5PSIzODAiIHJ4PSI3MiIgcnk9IjE0IgogICAgICAgICAgIGZpbGw9InVybCgjdGFjYUdyYWQpIiBvcGFjaXR5PSIwLjk1Ii8+CiAgPCEtLSBFc3Blc3N1cmEgZGEgYmFzZSAtLT4KICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMzc2IiByeD0iNzIiIHJ5PSIxMCIKICAgICAgICAgICBmaWxsPSJ1cmwoI3RhY2FHcmFkKSIgb3BhY2l0eT0iMC42Ii8+CgogIDwhLS0gQnJpbGhvIG5hIGJhc2UgLS0+CiAgPGVsbGlwc2UgY3g9IjIzMiIgY3k9IjM3NiIgcng9IjIyIiByeT0iNCIKICAgICAgICAgICBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjE4Ii8+CgogIDwhLS0g4pWQ4pWQ4pWQIFBJTkdPIC8gR09UQSBkZSB2aW5obyDilZDilZDilZAgLS0+CiAgPGNpcmNsZSBjeD0iMzA0IiBjeT0iMjI2IiByPSI2IgogICAgICAgICAgZmlsbD0iI2U3NGMzYyIgb3BhY2l0eT0iMC44NSIvPgogIDxlbGxpcHNlIGN4PSIzMDQiIGN5PSIyMjYiIHJ4PSIyIiByeT0iMSIKICAgICAgICAgICBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjQiLz4KCiAgPCEtLSDilZDilZDilZAgVEVYVE8gIk1BIiBlc3RpbGl6YWRvIGVtIGJhaXhvIOKVkOKVkOKVkCAtLT4KICA8IS0tIExpbmhhIGRvdXJhZGEgZGVjb3JhdGl2YSBhY2ltYSBkbyB0ZXh0byAtLT4KICA8bGluZSB4MT0iMTU2IiB5MT0iNDE4IiB4Mj0iMzU2IiB5Mj0iNDE4IgogICAgICAgIHN0cm9rZT0idXJsKCNvdXJvR3JhZCkiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CgogIDx0ZXh0IHg9IjI1NiIgeT0iNDUyIgogICAgICAgIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSIzOCIKICAgICAgICBmb250LXdlaWdodD0iNzAwIgogICAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiCiAgICAgICAgbGV0dGVyLXNwYWNpbmc9IjgiCiAgICAgICAgZmlsbD0idXJsKCNvdXJvR3JhZCkiCiAgICAgICAgb3BhY2l0eT0iMC45MiI+QURFR0E8L3RleHQ+CgogIDwhLS0gTGluaGEgZG91cmFkYSBkZWNvcmF0aXZhIGFiYWl4byBkbyB0ZXh0byAtLT4KICA8bGluZSB4MT0iMTc2IiB5MT0iNDYyIiB4Mj0iMzM2IiB5Mj0iNDYyIgogICAgICAgIHN0cm9rZT0idXJsKCNvdXJvR3JhZCkiIHN0cm9rZS13aWR0aD0iMC44IiBvcGFjaXR5PSIwLjQiLz4KCiAgPCEtLSBSZWZsZXhvIHN1dGlsIG5vIGZ1bmRvIChjw61yY3VsbyBkZSBsdXopIC0tPgogIDxyYWRpYWxHcmFkaWVudCBpZD0ibHV6RnVuZG8iIGN4PSIzMCUiIGN5PSIyMCUiIHI9IjYwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eTowLjA2Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmZmZmY7c3RvcC1vcGFjaXR5OjAiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEwIiByeT0iMTEwIiBmaWxsPSJ1cmwoI2x1ekZ1bmRvKSIvPgo8L3N2Zz4K">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Minha Adega">
+    <meta name="theme-color" content="#7b1a2e">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vinho:#7b1a2e; --vinho-dark:#4e0f1d; --vinho-light:#f9ede8;
+            --bege:#f5f0eb; --bege-dark:#ede8e2;
+            --verde:#2e7d52; --verde-light:#e8f5ee;
+            --cinza:#6c757d; --azul:#2563eb;
+            --ouro:#c9a84c; --ouro-light:#fdf6e3;
+            --danger:#c0392b;
+            --card:#ffffff; --inp:#f7f3ef;
+            --text:#1a1a2e; --muted:#7a7a8c;
+            --border:#ebebf0; --bg:#f5f0eb;
+            --shadow:0 2px 12px rgba(0,0,0,0.07);
+        }
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
+        /* ── AUTH ─────────────────────────────────────────────── */
+        #authScreen{display:none;min-height:100vh;background:linear-gradient(160deg,var(--vinho-dark) 0%,#3d0f1a 55%,#1a0508 100%);align-items:center;justify-content:center;padding:24px;position:relative;overflow:hidden;}
+        #authScreen.show{display:flex;}
+        #authScreen::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(123,26,46,0.35) 0%,transparent 70%);top:-120px;right:-120px;border-radius:50%;}
+        #authScreen::after{content:'🍷';position:absolute;font-size:220px;opacity:0.04;bottom:-40px;left:-20px;transform:rotate(-15deg);}
+        .auth-card{background:white;border-radius:24px;padding:36px 28px;width:100%;max-width:420px;box-shadow:0 30px 80px rgba(0,0,0,0.45);position:relative;z-index:1;animation:fadeUp 0.4s ease;}
+        @keyframes fadeUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+        .auth-logo{text-align:center;margin-bottom:28px;}
+        .auth-logo-icon{width:76px;height:76px;background:linear-gradient(135deg,var(--vinho),#c0392b);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 14px;box-shadow:0 8px 24px rgba(123,26,46,0.4);}
+        .auth-logo h1{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text);}
+        .auth-logo p{font-size:13px;color:var(--muted);margin-top:4px;}
+        .auth-version{display:inline-flex;align-items:center;gap:6px;background:var(--vinho-light);border:1px solid rgba(123,26,46,0.2);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--vinho);margin-top:8px;letter-spacing:0.3px;}
+        .auth-version-dot{width:6px;height:6px;background:var(--verde);border-radius:50%;animation:vdot 2s ease-in-out infinite;}
+        @keyframes vdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+        .auth-tabs{display:flex;background:var(--bg);border-radius:12px;padding:4px;margin-bottom:24px;}
+        .auth-tab{flex:1;padding:10px;border:none;background:transparent;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+        .auth-tab.active{background:white;color:var(--vinho);box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+        .auth-field{margin-bottom:16px;}
+        .auth-label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+        .auth-input{width:100%;background:var(--bg);border:2px solid transparent;border-radius:12px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);outline:none;transition:border-color 0.2s;}
+        .auth-input:focus{border-color:var(--vinho);background:white;}
+        .auth-msg{font-size:13px;padding:10px 14px;border-radius:10px;margin-bottom:14px;display:none;}
+        .auth-msg.err{background:#fef2f2;color:var(--danger);border:1px solid #fdd;display:block;}
+        .auth-msg.ok{background:var(--verde-light);color:var(--verde);border:1px solid #c6f0da;display:block;}
+        .auth-msg.info{background:#eff6ff;color:var(--azul);border:1px solid #bfdbfe;display:block;}
+        .btn-auth{width:100%;background:linear-gradient(135deg,var(--vinho),#c0392b);color:white;border:none;border-radius:12px;padding:15px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(123,26,46,0.35);}
+        .btn-auth:disabled{opacity:0.6;cursor:not-allowed;}
+        .auth-footer{text-align:center;margin-top:20px;font-size:12px;color:var(--muted);}
+        .auth-link{color:var(--vinho);cursor:pointer;text-decoration:underline;}
+
+        /* ── SETUP ────────────────────────────────────────────── */
+        #setupOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:300;align-items:center;justify-content:center;padding:20px;}
+        #setupOverlay.open{display:flex;}
+        #setupModal{background:white;border-radius:20px;padding:28px 24px;width:100%;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-height:90vh;overflow-y:auto;}
+        #setupModal h2{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:8px;}
+        #setupModal p{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.6;}
+        .setup-hint{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:12px;color:#92400e;margin-bottom:18px;line-height:1.8;}
+        .setup-hint code{display:block;background:#fef9c3;padding:8px 10px;border-radius:6px;font-size:11px;margin-top:8px;white-space:pre-wrap;line-height:1.7;}
+        .setup-field{margin-bottom:14px;}
+        .setup-label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+        .setup-input{width:100%;background:var(--bg);border:2px solid transparent;border-radius:10px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color 0.2s;}
+        .setup-input:focus{border-color:var(--vinho);}
+        #setupStatus{font-size:13px;margin-bottom:12px;min-height:20px;}
+        #setupStatus.ok{color:var(--verde);}
+        #setupStatus.err{color:var(--danger);}
+        .btn-setup{width:100%;background:linear-gradient(135deg,var(--vinho),#c0392b);color:white;border:none;border-radius:12px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;}
+
+        /* ── APP ──────────────────────────────────────────────── */
+        #appScreen{display:none;}
+        #appScreen.show{display:block;}
+        .app-header{background:linear-gradient(135deg,var(--vinho) 0%,var(--vinho-dark) 100%);padding:20px 20px 26px;color:white;}
+        .header-top{display:flex;align-items:center;justify-content:space-between;}
+        .header-brand{display:flex;align-items:center;gap:12px;}
+        .header-icon{width:46px;height:46px;background:rgba(255,255,255,0.15);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+        .header-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;}
+        .header-sub{font-size:11px;opacity:0.7;margin-top:1px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .header-version{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:3px 9px;font-size:10px;font-weight:600;color:rgba(255,255,255,0.9);margin-top:4px;letter-spacing:0.3px;}
+        .header-actions{display:flex;gap:8px;align-items:center;}
+        .btn-add{background:white;color:var(--vinho);border:none;padding:9px 16px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.15);}
+        .btn-logout{background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);padding:9px 14px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
+
+        /* ── DB STATUS ────────────────────────────────────────── */
+        .db-status-bar{background:white;margin:14px 14px 0;border-radius:10px;padding:9px 13px;display:flex;align-items:center;gap:8px;font-size:12px;box-shadow:var(--shadow);}
+        .db-dot{width:8px;height:8px;border-radius:50%;background:#ccc;flex-shrink:0;}
+        .db-dot.ok{background:var(--verde);box-shadow:0 0 0 3px #c6f0da;}
+        .db-dot.err{background:var(--danger);}
+        .db-dot.loading{background:var(--ouro);animation:pulse 1s infinite;}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+        .db-status-text{flex:1;color:var(--muted);}
+        .db-cfg-link{color:var(--vinho);font-weight:600;cursor:pointer;font-size:11px;text-decoration:underline;}
+
+        /* ── STATS ────────────────────────────────────────────── */
+        .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 14px 0;}
+        .stat-card{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;}
+        .stat-card.full{grid-column:1/-1;}
+        .stat-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+        .stat-icon.vinho{background:var(--vinho-light);}
+        .stat-icon.ouro{background:var(--ouro-light);}
+        .stat-icon.verde{background:var(--verde-light);}
+        .stat-label{font-size:11px;color:var(--muted);}
+        .stat-value{font-size:18px;font-weight:700;color:var(--text);margin-top:2px;}
+
+        /* ── CONTROLES ────────────────────────────────────────── */
+        .controls-panel{background:var(--card);margin:14px;border-radius:14px;padding:12px;box-shadow:var(--shadow);position:sticky;top:8px;z-index:20;}
+        .search-box{display:flex;align-items:center;background:var(--bg);border-radius:10px;padding:9px 12px;gap:8px;margin-bottom:8px;}
+        .search-box input{border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);flex:1;outline:none;}
+        .filters-row{display:flex;gap:8px;}
+        .filter-select{flex:1;background:var(--bg);border:none;border-radius:10px;padding:9px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);cursor:pointer;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7a8c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:28px;}
+
+        /* ── LISTA ────────────────────────────────────────────── */
+        .list-container{padding:0 14px 100px;}
+        .empty-state{text-align:center;padding:50px 20px;color:var(--muted);}
+        .spin-icon{display:inline-block;animation:sp 1s linear infinite;font-size:32px;}
+        @keyframes sp{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+        /* ── CARD ─────────────────────────────────────────────── */
+        .wine-card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden;}
+        .wine-card-inner{display:flex;gap:12px;padding:14px;}
+        .wine-foto-wrap{position:relative;width:80px;height:80px;flex-shrink:0;}
+        .wine-foto{width:80px;height:80px;border-radius:11px;object-fit:cover;background:var(--bege-dark);display:block;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;border:1px solid var(--bege-dark);}
+        .wine-foto:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,0.18);}
+        .wine-foto-zoom{position:absolute;bottom:4px;right:4px;background:rgba(0,0,0,0.55);color:white;border-radius:5px;font-size:10px;padding:2px 5px;pointer-events:none;backdrop-filter:blur(2px);}
+        .wine-foto-ph{width:80px;height:80px;border-radius:11px;background:var(--bege-dark);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;border:1px solid #e0d8d0;}
+        .wine-body{flex:1;min-width:0;}
+        .wine-nome{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:2px;}
+        .wine-sub{font-size:12px;color:var(--muted);margin-bottom:4px;}
+        .wine-stars{font-size:14px;margin-bottom:5px;}
+        .wine-meta{font-size:12px;color:#555;line-height:1.9;}
+        .wine-valor{color:var(--verde);font-weight:600;}
+        .wine-aval{font-size:12px;color:#666;font-style:italic;margin-top:5px;background:var(--ouro-light);border-left:3px solid var(--ouro);border-radius:0 6px 6px 0;padding:6px 9px;line-height:1.5;}
+        .wine-qty{display:flex;align-items:center;gap:8px;margin-top:8px;}
+        .btn-qty{background:var(--bege-dark);color:#555;border:none;width:28px;height:28px;border-radius:50%;font-weight:bold;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background 0.15s;}
+        .btn-qty:hover{background:#ddd;}
+        .qty-val{font-weight:700;font-size:14px;min-width:22px;text-align:center;}
+        .wine-footer{padding:0 14px 12px;display:flex;align-items:center;justify-content:space-between;}
+        .badge-cons{background:#fff0f0;color:#c0392b;font-size:12px;padding:4px 10px;border-radius:20px;border:1px solid #f5c6c6;}
+        .wine-actions{display:flex;gap:6px;}
+        .btn-sm{padding:6px 12px;font-size:12px;border:none;border-radius:8px;cursor:pointer;color:#fff;font-weight:600;font-family:'DM Sans',sans-serif;}
+
+        /* ── LIGHTBOX ─────────────────────────────────────────── */
+        #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px;backdrop-filter:blur(6px);}
+        #lightbox.open{display:flex;}
+        #lightboxImg{max-width:100%;max-height:80vh;border-radius:14px;object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);animation:lbIn 0.25s cubic-bezier(0.34,1.56,0.64,1);}
+        @keyframes lbIn{from{transform:scale(0.88);opacity:0}to{transform:scale(1);opacity:1}}
+        #lightboxCaption{color:rgba(255,255,255,0.8);font-size:13px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;}
+        #lightboxClose{position:fixed;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+        #lightboxClose:hover{background:rgba(255,255,255,0.28);}
+        .lb-hint{font-size:11px;color:rgba(255,255,255,0.4);}
+
+        /* ── BACKUP ───────────────────────────────────────────── */
+        .backup-bar{display:flex;gap:8px;padding:14px;background:var(--card);margin:14px 14px 0;border-radius:12px;box-shadow:var(--shadow);}
+        .btn-bkp{flex:1;padding:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;}
+
+        /* ── DRAWER ───────────────────────────────────────────── */
+        .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:100;backdrop-filter:blur(2px);}
+        .overlay.open{display:flex;align-items:flex-end;}
+        .drawer{background:var(--card);width:100%;max-width:600px;margin:0 auto;border-radius:24px 24px 0 0;padding:0 0 32px;max-height:92vh;overflow-y:auto;animation:slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+        @keyframes slideUp{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
+        .drawer-handle{width:40px;height:4px;background:var(--border);border-radius:4px;margin:14px auto 0;}
+        .drawer-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 12px;border-bottom:1px solid var(--border);}
+        .drawer-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;}
+        .drawer-close{width:30px;height:30px;border-radius:50%;border:none;background:var(--bg);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;}
+        .drawer-body{padding:16px 18px;}
+        .field-group{margin-bottom:13px;}
+        .field-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;display:block;}
+        .field-input{width:100%;background:var(--bg);border:2px solid transparent;border-radius:10px;padding:11px 13px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);outline:none;transition:border-color 0.2s;}
+        .field-input:focus{border-color:var(--vinho);}
+        textarea.field-input{resize:vertical;min-height:80px;}
+        .row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .nome-wrap{display:flex;gap:8px;align-items:center;}
+        .nome-wrap .field-input{flex:1;}
+        .lbtn{display:flex;width:46px;height:46px;border-radius:12px;color:#fff;font-size:20px;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;}
+        .lbtn input{display:none;}
+        .lbtn.cam{background:var(--ouro);}
+        .lbtn.gal{background:#555;}
+        .ocr-st{font-size:12px;margin-top:4px;min-height:16px;}
+        #fotoPreview{display:none;width:100%;max-height:130px;object-fit:cover;border-radius:10px;margin-top:8px;}
+        .foto-size-info{font-size:11px;color:var(--verde);margin-top:4px;text-align:center;}
+        .stars-row{display:flex;gap:6px;margin-top:4px;}
+        .stars-row span{font-size:28px;cursor:pointer;opacity:0.2;transition:opacity 0.15s;}
+        .stars-row span.on{opacity:1;}
+        .btn-salvar{width:100%;background:linear-gradient(135deg,var(--vinho),#c0392b);color:white;border:none;border-radius:12px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px;}
+        .btn-salvar:disabled{opacity:0.6;cursor:not-allowed;}
+        .btn-cancelar{width:100%;background:var(--bg);color:var(--muted);border:none;border-radius:12px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;}
+
+        /* ── OCR ──────────────────────────────────────────────── */
+        #ocrOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;}
+        #ocrOverlay.on{display:flex;}
+        #ocrOverlay p{color:#fff;font-size:17px;font-weight:700;}
+        .spin{width:52px;height:52px;border:5px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:sp .8s linear infinite;}
+        .ocr-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:16px;}
+        .ocr-bg.on{display:flex;}
+        .ocr-box{background:#fff;border-radius:14px;padding:20px;width:100%;max-width:420px;}
+        .ocr-box h3{margin:0 0 10px;color:var(--vinho);font-family:'Cormorant Garamond',serif;font-size:20px;}
+        #ocrFotoPreview{width:100%;max-height:140px;object-fit:cover;border-radius:8px;margin-bottom:10px;display:none;}
+        .ocr-box textarea{width:100%;min-height:70px;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;}
+        .ocr-btns{display:flex;gap:10px;}
+        .ocr-btns button{flex:1;padding:11px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;}
+        .ocr-ok{background:var(--vinho);color:#fff;}
+        .ocr-no{background:#eee;color:#555;}
+    </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="fecharLightbox(event)">
+    <button id="lightboxClose" onclick="_fecharLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <div id="lightboxCaption"></div>
+    <div class="lb-hint">Toque fora para fechar</div>
+</div>
+
+<!-- OCR LOADING -->
+<div id="ocrOverlay"><div style="display:flex;flex-direction:column;align-items:center;gap:18px"><div class="spin"></div><p>⏳ Lendo rótulo...</p></div></div>
+
+<!-- OCR CONFIRMAR -->
+<div class="ocr-bg" id="ocrBg">
+    <div class="ocr-box">
+        <h3>📷 Confirmar nome</h3>
+        <img id="ocrFotoPreview" alt="">
+        <p style="font-size:13px;color:#666;margin-bottom:8px">Edite se necessário:</p>
+        <textarea id="ocrTexto" rows="3"></textarea>
+        <div class="ocr-btns">
+            <button class="ocr-no" onclick="fecharOcr()">Cancelar</button>
+            <button class="ocr-ok" onclick="confirmarOcr()">✔ Usar este nome</button>
+        </div>
+    </div>
+</div>
+
+<!-- SETUP -->
+<div id="setupOverlay">
+    <div id="setupModal">
+        <h2>⚙️ Configurar Supabase</h2>
+        <p>Informe as credenciais do seu projeto Supabase para conectar o banco de dados.</p>
+        <div class="setup-hint">
+            <strong>Execute no SQL Editor do Supabase:</strong>
+            <code>CREATE TABLE IF NOT EXISTS adega (
+  id bigserial PRIMARY KEY,
+  user_id uuid REFERENCES auth.users NOT NULL,
+  nome text NOT NULL,
+  uva text,
+  local text,
+  safra text,
+  valor numeric,
+  data date,
+  quantidade integer DEFAULT 1,
+  nota integer DEFAULT 0,
+  avaliacao text,
+  foto text,
+  foto_hd text,
+  criado_em timestamptz DEFAULT now()
+);
+ALTER TABLE adega ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "usuarios proprios" ON adega
+  USING (auth.uid() = user_id)
+  WITH CHECK (auth.uid() = user_id);
+
+-- Tabela compartilhada de nomes de vinhos
+CREATE TABLE IF NOT EXISTS vinhos_nomes (
+  id bigserial PRIMARY KEY,
+  nome text UNIQUE NOT NULL,
+  uva text,
+  safra text,
+  contagem integer DEFAULT 1,
+  criado_em timestamptz DEFAULT now()
+);
+ALTER TABLE vinhos_nomes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "leitura publica" ON vinhos_nomes FOR SELECT USING (auth.role() = 'authenticated');
+CREATE POLICY "insercao autenticada" ON vinhos_nomes FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "incremento autenticado" ON vinhos_nomes FOR UPDATE USING (auth.role() = 'authenticated');</code>
+        </div>
+        <div class="setup-field">
+            <label class="setup-label">🔗 Project URL</label>
+            <input class="setup-input" type="url" id="cfgUrl" placeholder="https://xxxx.supabase.co">
+        </div>
+        <div class="setup-field">
+            <label class="setup-label">🔑 Anon Key</label>
+            <input class="setup-input" type="text" id="cfgKey" placeholder="eyJhbGci...">
+        </div>
+        <div id="setupStatus"></div>
+        <button class="btn-setup" onclick="testarEConectar()">✅ Salvar e Continuar</button>
+    </div>
+</div>
+
+<!-- LOGIN -->
+<div id="authScreen">
+    <div class="auth-card">
+        <div class="auth-logo">
+            <div class="auth-logo-icon">🍷</div>
+            <h1>Minha Adega</h1>
+            <p>Wine Log pessoal</p>
+            <div class="auth-version">
+                <span class="auth-version-dot"></span>
+                v1.0.0 · Mai 2026
+            </div>
+        </div>
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="tabLogin" onclick="trocarAba('login')">Entrar</button>
+            <button class="auth-tab" id="tabCadastro" onclick="trocarAba('cadastro')">Criar conta</button>
+        </div>
+        <div id="authMsg" class="auth-msg"></div>
+        <div class="auth-field">
+            <label class="auth-label">📧 E-mail</label>
+            <input class="auth-input" type="email" id="authEmail" placeholder="seu@email.com">
+        </div>
+        <div class="auth-field">
+            <label class="auth-label">🔒 Senha</label>
+            <input class="auth-input" type="password" id="authSenha" placeholder="Mínimo 6 caracteres">
+        </div>
+        <div class="auth-field" id="campoConfirmar" style="display:none;">
+            <label class="auth-label">🔒 Confirmar senha</label>
+            <input class="auth-input" type="password" id="authConfirmar" placeholder="Repita a senha">
+        </div>
+        <button class="btn-auth" id="btnAuth" onclick="autenticar()">Entrar</button>
+        <div class="auth-footer">
+            <span class="auth-link" id="linkEsqueci" onclick="esqueceuSenha()">Esqueci minha senha</span>
+            &nbsp;·&nbsp;
+            <span class="auth-link" onclick="abrirSetup()">⚙️ Config</span>
+        </div>
+    </div>
+</div>
+
+<!-- APP -->
+<div id="appScreen">
+    <div class="app-header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-icon">🍷</div>
+                <div>
+                    <div class="header-title">Minha Adega</div>
+                    <div class="header-sub" id="headerUser">–</div>
+                    <div class="header-version">v1.0.0 · Mai 2026</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-add" onclick="abrirDrawer()">+ Adicionar</button>
+                <button class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="db-status-bar">
+        <div class="db-dot loading" id="dbDot"></div>
+        <div class="db-status-text" id="dbStatusText">Carregando...</div>
+        <span class="db-cfg-link" onclick="abrirSetup()">⚙️</span>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon vinho">📦</div><div><div class="stat-label">Em Estoque</div><div class="stat-value" id="sQtd">–</div></div></div>
+        <div class="stat-card"><div class="stat-icon ouro">⭐</div><div><div class="stat-label">Nota Média</div><div class="stat-value" id="sNota">–</div></div></div>
+        <div class="stat-card full"><div class="stat-icon verde">💰</div><div><div class="stat-label">Valor em Estoque</div><div class="stat-value" id="sValor">R$ –</div></div></div>
+    </div>
+
+    <div class="controls-panel">
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="buscaTexto" placeholder="Buscar por nome, uva, local..." oninput="renderizar()">
+        </div>
+        <div class="filters-row">
+            <select class="filter-select" id="filtroStatus" onchange="renderizar()">
+                <option value="todos">📋 Todos</option>
+                <option value="estoque">📦 Em Estoque</option>
+                <option value="consumidos">🍷 Consumidos</option>
+            </select>
+            <select class="filter-select" id="ordemLista" onchange="renderizar()">
+                <option value="dataDesc">🕐 Recentes</option>
+                <option value="dataAsc">🕐 Antigos</option>
+                <option value="notaDesc">⭐ Melhores notas</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="list-container" id="lista">
+        <div style="text-align:center;padding:50px 20px;color:var(--muted)"><div class="spin-icon">⏳</div><p style="margin-top:10px">Carregando...</p></div>
+    </div>
+
+    <div class="backup-bar">
+        <button class="btn-bkp" onclick="exportarBackup()">📥 Exportar Backup</button>
+        <button class="btn-bkp" onclick="document.getElementById('fileIn').click()">📤 Importar Backup</button>
+        <input type="file" id="fileIn" accept=".txt,.json" style="display:none" onchange="importarBackup(event)">
+    </div>
+</div>
+
+<!-- DRAWER -->
+<div class="overlay" id="overlay" onclick="fecharDrawerFora(event)">
+    <div class="drawer">
+        <div class="drawer-handle"></div>
+        <div class="drawer-header">
+            <div class="drawer-title" id="drawerTitle">Adicionar Vinho</div>
+            <button class="drawer-close" onclick="fecharDrawer()">✕</button>
+        </div>
+        <div class="drawer-body">
+            <input type="hidden" id="wineId">
+            <div class="field-group">
+                <label class="field-label">🍷 Nome do Vinho *</label>
+                <div class="nome-wrap">
+                    <input type="text" class="field-input" id="nome" placeholder="Ex: D. V. CATENA">
+                    <label class="lbtn cam" title="Câmera">📷<input type="file" accept="image/*" capture="environment" id="inputCamera"></label>
+                    <label class="lbtn gal" title="Galeria">🖼️<input type="file" accept="image/*" id="inputGaleria"></label>
+                </div>
+                <div class="ocr-st" id="ocrStatus"></div>
+                <img id="fotoPreview" alt="preview">
+                <div class="foto-size-info" id="fotoSizeInfo"></div>
+            </div>
+            <div class="row-2">
+                <div class="field-group"><label class="field-label">Uva</label><input type="text" class="field-input" id="uva" placeholder="Ex: Malbec"></div>
+                <div class="field-group"><label class="field-label">Local</label><input type="text" class="field-input" id="local" placeholder="Ex: Estoque"></div>
+            </div>
+            <div class="row-2">
+                <div class="field-group"><label class="field-label">Safra</label><input type="number" class="field-input" id="safra" placeholder="2022"></div>
+                <div class="field-group"><label class="field-label">Valor (R$)</label><input type="number" class="field-input" id="valor" step="0.01" placeholder="89,90"></div>
+            </div>
+            <div class="row-2">
+                <div class="field-group"><label class="field-label">Data</label><input type="date" class="field-input" id="data"></div>
+                <div class="field-group"><label class="field-label">Quantidade</label><input type="number" class="field-input" id="quantidade" placeholder="1"></div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">📝 Avaliação</label>
+                <textarea class="field-input" id="avaliacao" placeholder="Aromas, sabor, corpo, harmonização..."></textarea>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Nota</label>
+                <div class="stars-row" id="starsRow">
+                    <span onclick="setNota(1)">⭐</span>
+                    <span onclick="setNota(2)">⭐</span>
+                    <span onclick="setNota(3)">⭐</span>
+                    <span onclick="setNota(4)">⭐</span>
+                    <span onclick="setNota(5)">⭐</span>
+                </div>
+                <input type="hidden" id="nota" value="0">
+            </div>
+            <button class="btn-salvar" id="btnSalvar" onclick="salvar()">GRAVAR VINHO</button>
+            <button class="btn-cancelar" id="btnCancelar" style="display:none" onclick="fecharDrawer()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══════════════════════════════════
+// VERSÃO
+// ═══════════════════════════════════
+const APP_VERSION = {
+    numero: '1.0.0',
+    data: 'Mai 2026',
+    historico: [
+        { v:'1.0.0', data:'Mai 2026', desc:'Versão inicial com Supabase: multi-usuário, banco de dados, foto HD e lightbox.' },
+    ]
+};
+
+// ═══════════════════════════════════
+// ESTADO GLOBAL
+// ═══════════════════════════════════
+const APP = { url:'', key:'', token:'', userId:'', userEmail:'', vinhos:[] };
+let notaSel = 0;
+let fotoBase64 = '';
+let fotoHDBase64 = '';
+
+// ═══════════════════════════════════
+// LIGHTBOX
+// ═══════════════════════════════════
+window._fotoHDMap = {};
+window._fotoMap = {};
+
+function abrirLightbox(id){
+    const src = window._fotoHDMap[id] || window._fotoMap[id];
+    if(!src) return;
+    const v = APP.vinhos.find(x=>x.id==id);
+    const caption = v ? v.nome + (v.uva ? ' · ' + v.uva : '') + (v.safra ? ' · ' + v.safra : '') : '';
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCaption').textContent = caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function fecharLightbox(e){ if(e.target===document.getElementById('lightbox')) _fecharLightbox(); }
+function _fecharLightbox(){ document.getElementById('lightbox').classList.remove('open'); document.getElementById('lightboxImg').src=''; document.body.style.overflow=''; }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') _fecharLightbox(); });
+
+// ═══════════════════════════════════
+// OCR
+// ═══════════════════════════════════
+const UVAS_CONHECIDAS = [
+    "malbec","cabernet sauvignon","cabernet franc","merlot","syrah","shiraz",
+    "tempranillo","sangiovese","nebbiolo","barbera","montepulciano","primitivo",
+    "grenache","garnacha","pinot noir","pinot gris","pinot grigio","chardonnay",
+    "sauvignon blanc","riesling","gewurztraminer","viognier","chenin blanc",
+    "touriga nacional","touriga franca","tinta roriz","trincadeira","alicante",
+    "aragonez","baga","castelão","alvarinho","loureiro","arinto","antão vaz",
+    "verdelho","encruzado","fernão pires","moscatel","carmenere","tannat",
+    "bonarda","torrontés","viura","albariño","godello","mencía","monastrell",
+    "nero d'avola","falanghina","fiano","greco","vermentino","pecorino",
+    "corvina","rondinella","molinara","glera","prosecco","muscat",
+    "zinfandel","petite sirah","mourvedre","carignan","cinsault"
+];
+const REGIOES_CONHECIDAS = [
+    "douro","alentejo","dão","bairrada","vinho verde","lisboa","tejo","setúbal",
+    "chianti","barolo","barbaresco","brunello","amarone","valpolicella","soave",
+    "prosecco","franciacorta","rioja","ribera del duero","priorat","rías baixas",
+    "bordeaux","bourgogne","burgundy","champagne","alsace","rhône","loire",
+    "napa","sonoma","mendoza","maipo","colchagua","casablanca","uco valley",
+    "marlborough","hawke's bay","barossa","mclaren","coonawarra",
+    "mosel","rheingau","pfalz","württemberg","tokaj","primitivo di manduria"
+];
+
+function extrairDadosOcr(texto){
+    const lower = texto.toLowerCase();
+    let uvaEncontrada = "";
+    for(const uva of UVAS_CONHECIDAS){
+        const esc = uva.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+        if(new RegExp('(?:^|[\\s,/\\-])'+esc+'(?:[\\s,/\\-]|$)','i').test(lower)){ uvaEncontrada=uva; break; }
+    }
+    if(!uvaEncontrada){
+        for(const reg of REGIOES_CONHECIDAS){
+            const esc = reg.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+            if(new RegExp('(?:^|[\\s,/\\-])'+esc+'(?:[\\s,/\\-]|$)','i').test(lower)){ uvaEncontrada=reg; break; }
+        }
+    }
+    if(uvaEncontrada) uvaEncontrada = uvaEncontrada.replace(/\b\w/g,c=>c.toUpperCase());
+    const matchSafra = lower.match(/\b(201[5-9]|202[0-9]|2030)\b/);
+    return { uva: uvaEncontrada, safra: matchSafra?matchSafra[1]:'' };
+}
+
+async function processarFoto(file){
+    if(!file) return;
+    const st = document.getElementById('ocrStatus');
+
+    // Comprime thumb, HD e OCR em paralelo
+    let urlThumb, urlHD, urlOcr;
+    try{
+        [urlThumb, urlHD, urlOcr] = await Promise.all([
+            comprimirImagem(file, 200, 0.55),
+            comprimirImagem(file, 1200, 0.88),
+            comprimirImagem(file, 700, 0.80),
+        ]);
+    }catch(e){
+        st.style.color='#e67e00'; st.textContent='⚠️ Erro ao processar imagem.'; return;
+    }
+
+    fotoBase64 = urlThumb;
+    fotoHDBase64 = urlHD;
+
+    // Mostra preview imediatamente
+    const prev = document.getElementById('fotoPreview');
+    prev.src = urlThumb; prev.style.display='block';
+    const kbThumb = Math.round(urlThumb.length*0.75/1024);
+    const kbHD = Math.round(urlHD.length*0.75/1024);
+    document.getElementById('fotoSizeInfo').textContent = `✅ Thumb: ~${kbThumb} KB · HD: ~${kbHD} KB`;
+
+    st.style.color='#888'; st.textContent='🔍 Lendo rótulo em segundo plano...';
+
+    // OCR roda em background — não bloqueia o formulário
+    (async () => {
+        try{
+            const fd = new FormData();
+            fd.append('base64Image', urlOcr);
+            fd.append('language','por');
+            fd.append('isOverlayRequired','false');
+            fd.append('detectOrientation','true');
+            fd.append('scale','true');
+            fd.append('OCREngine','2');
+            const resp = await fetch('https://api.ocr.space/parse/image',{method:'POST',headers:{'apikey':'K81660479788957'},body:fd});
+            const data = await resp.json();
+            const texto = (data?.ParsedResults?.[0]?.ParsedText||'').trim();
+
+            const {uva, safra} = extrairDadosOcr(texto);
+            if(uva && !document.getElementById('uva').value) document.getElementById('uva').value = uva;
+            if(safra && !document.getElementById('safra').value) document.getElementById('safra').value = safra;
+
+            const linhas = texto.split('\n').map(l=>l.trim()).filter(l=>l.length>1);
+            document.getElementById('ocrTexto').value = linhas.join('\n');
+            document.getElementById('ocrFotoPreview').src = urlThumb;
+            document.getElementById('ocrFotoPreview').style.display='block';
+            document.getElementById('ocrBg').classList.add('on');
+            st.textContent='';
+        }catch(e){
+            st.style.color='#e67e00';
+            st.textContent='⚠️ OCR falhou. Digite o nome manualmente.';
+        }
+    })();
+}
+
+document.getElementById('inputCamera').addEventListener('change',function(){processarFoto(this.files[0]);this.value='';});
+document.getElementById('inputGaleria').addEventListener('change',function(){processarFoto(this.files[0]);this.value='';});
+
+function confirmarOcr(){
+    const nome = document.getElementById('ocrTexto').value.trim().split('\n')[0].trim();
+    if(nome){ document.getElementById('nome').value = nome; }
+    fecharOcr();
+}
+function fecharOcr(){ document.getElementById('ocrBg').classList.remove('on'); }
+
+// ═══════════════════════════════════
+// TABELA COMPARTILHADA DE NOMES
+// ═══════════════════════════════════
+
+// Busca na tabela vinhos_nomes por similaridade com o texto do OCR
+async function buscarNomeVinho(textoOcr){
+    if(!APP.token || !textoOcr) return null;
+    try{
+        // Pega os primeiros 200 nomes cadastrados (ordenados por mais usados)
+        const r = await fetch(APP.url+'/rest/v1/vinhos_nomes?select=nome,uva,safra&order=contagem.desc&limit=200',{
+            headers: {...h(), 'Prefer':'return=representation'}
+        });
+        if(!r.ok) return null;
+        const lista = await r.json();
+        if(!lista.length) return null;
+
+        // Normaliza o texto OCR para comparação
+        const textoNorm = textoOcr.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+        const palavrasOcr = textoNorm.split(' ').filter(p=>p.length>2);
+
+        let melhor = null, melhorScore = 0;
+        for(const item of lista){
+            const nomeNorm = item.nome.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+            const palavrasNome = nomeNorm.split(' ').filter(p=>p.length>2);
+            // Conta quantas palavras do nome existem no texto OCR
+            const matches = palavrasNome.filter(p => textoNorm.includes(p)).length;
+            const score = matches / Math.max(palavrasNome.length, 1);
+            if(score > melhorScore && score >= 0.6){ // 60% das palavras devem bater
+                melhorScore = score;
+                melhor = item;
+            }
+        }
+        return melhor;
+    }catch(e){ return null; }
+}
+
+// Grava ou incrementa o nome na tabela compartilhada (fire-and-forget)
+async function gravarNomeVinho(nome, uva, safra){
+    if(!APP.token || !nome) return;
+    try{
+        // Tenta inserir; se já existir (UNIQUE), incrementa contagem
+        const r = await fetch(APP.url+'/rest/v1/vinhos_nomes',{
+            method:'POST',
+            headers:{...h(),'Prefer':'resolution=merge-duplicates,return=minimal','Content-Type':'application/json'},
+            body: JSON.stringify({
+                nome: nome.trim(),
+                uva: uva||null,
+                safra: safra||null,
+                contagem: 1
+            })
+        });
+        // Se conflict (já existe), incrementa contagem via RPC ou PATCH
+        if(r.status===409||r.status===200){
+            // Busca o id e incrementa
+            const busca = await fetch(APP.url+'/rest/v1/vinhos_nomes?nome=eq.'+encodeURIComponent(nome.trim())+'&select=id,contagem',{headers:h()});
+            if(busca.ok){
+                const arr = await busca.json();
+                if(arr[0]){
+                    await fetch(APP.url+'/rest/v1/vinhos_nomes?id=eq.'+arr[0].id,{
+                        method:'PATCH',
+                        headers:{...h(),'Content-Type':'application/json','Prefer':'return=minimal'},
+                        body: JSON.stringify({contagem: (arr[0].contagem||1)+1})
+                    });
+                }
+            }
+        }
+    }catch(e){ /* silencioso — não impede o fluxo */ }
+}
+
+// ═══════════════════════════════════
+// CONFIG / SETUP
+// ═══════════════════════════════════
+function carregarCfg(){
+    try{ const c=JSON.parse(localStorage.getItem('adega_cfg')||'null'); if(c){APP.url=c.url.replace(/\/$/,'');APP.key=c.key;return true;} }catch(e){}
+    return false;
+}
+function salvarCfg(url,key){ APP.url=url.replace(/\/$/,'');APP.key=key;localStorage.setItem('adega_cfg',JSON.stringify({url:APP.url,key})); }
+function abrirSetup(){
+    try{ const c=JSON.parse(localStorage.getItem('adega_cfg')||'null'); if(c){document.getElementById('cfgUrl').value=c.url;document.getElementById('cfgKey').value=c.key;} }catch(e){}
+    document.getElementById('setupOverlay').classList.add('open');
+    document.getElementById('setupStatus').textContent='';
+}
+function fecharSetup(){ document.getElementById('setupOverlay').classList.remove('open'); }
+async function testarEConectar(){
+    const url=document.getElementById('cfgUrl').value.trim();
+    const key=document.getElementById('cfgKey').value.trim();
+    const st=document.getElementById('setupStatus');
+    if(!url||!key){st.textContent='⚠️ Preencha os dois campos.';st.className='err';return;}
+    if(!url.startsWith('https://')){st.textContent='⚠️ URL deve começar com https://';st.className='err';return;}
+    if(!key.startsWith('eyJ')){st.textContent='⚠️ Anon Key inválida. Deve começar com "eyJ". Vá em Project Settings → API → anon public.';st.className='err';return;}
+    st.textContent='⏳ Testando conexão...';st.className='';
+    const base=url.replace(/\/$/,'');
+    try{
+        const r=await fetch(base+'/rest/v1/',{headers:{'apikey':key,'Authorization':'Bearer '+key}});
+        if(r.status===200||r.status===404||r.status===400){
+            salvarCfg(url,key);
+            st.textContent='✅ Conectado! Redirecionando...';st.className='ok';
+            setTimeout(()=>{fecharSetup();iniciar();},700);
+            return;
+        }
+        if(r.status===401){st.textContent='❌ Anon Key inválida (401). Verifique em Project Settings → API → anon public.';st.className='err';return;}
+        st.textContent='❌ Erro HTTP '+r.status;st.className='err';
+    }catch(e){
+        if(e.message.toLowerCase().includes('fetch')||e.message.toLowerCase().includes('failed')){
+            // CORS pode bloquear mesmo URLs válidas — salva e tenta conectar assim mesmo
+            salvarCfg(url,key);
+            st.textContent='⚠️ Verificação bloqueada pelo navegador (CORS). Salvando e tentando...';st.className='';
+            setTimeout(()=>{fecharSetup();iniciar();},1200);
+        }else{
+            st.textContent='❌ '+e.message;st.className='err';
+        }
+    }
+}
+
+// ═══════════════════════════════════
+// AUTH
+// ═══════════════════════════════════
+let abaAtiva='login';
+function trocarAba(aba){
+    abaAtiva=aba;
+    document.getElementById('tabLogin').classList.toggle('active',aba==='login');
+    document.getElementById('tabCadastro').classList.toggle('active',aba==='cadastro');
+    document.getElementById('campoConfirmar').style.display=aba==='cadastro'?'block':'none';
+    document.getElementById('btnAuth').textContent=aba==='login'?'Entrar':'Criar conta';
+    document.getElementById('linkEsqueci').style.display=aba==='login'?'inline':'none';
+    setAuthMsg('','');
+}
+function setAuthMsg(txt,tipo){ const el=document.getElementById('authMsg');el.textContent=txt;el.className='auth-msg'+(tipo?' '+tipo:''); }
+
+async function autenticar(){
+    const email=document.getElementById('authEmail').value.trim();
+    const senha=document.getElementById('authSenha').value;
+    const confirmar=document.getElementById('authConfirmar').value;
+    const btn=document.getElementById('btnAuth');
+    if(!email||!senha){setAuthMsg('Preencha e-mail e senha.','err');return;}
+    if(abaAtiva==='cadastro'&&senha!==confirmar){setAuthMsg('As senhas não coincidem.','err');return;}
+    if(abaAtiva==='cadastro'&&senha.length<6){setAuthMsg('Senha mínima: 6 caracteres.','err');return;}
+    btn.disabled=true;btn.textContent='⏳ Aguarde...';
+    const endpoint=abaAtiva==='login'?APP.url+'/auth/v1/token?grant_type=password':APP.url+'/auth/v1/signup';
+    try{
+        const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','apikey':APP.key},body:JSON.stringify({email,password:senha})});
+        const data=await r.json();
+        if(!r.ok){setAuthMsg('❌ '+traduzirErro(data.error_description||data.msg||data.message||'Erro'),'err');btn.disabled=false;btn.textContent=abaAtiva==='login'?'Entrar':'Criar conta';return;}
+        if(abaAtiva==='cadastro'&&!data.access_token){setAuthMsg('✅ Conta criada! Faça login para entrar.','ok');btn.disabled=false;btn.textContent='Criar conta';return;}
+        APP.token=data.access_token;APP.userId=data.user.id;APP.userEmail=data.user.email;
+        localStorage.setItem('adega_sess',JSON.stringify({token:data.access_token,refresh:data.refresh_token,exp:Date.now()+(data.expires_in||3600)*1000,uid:data.user.id,email:data.user.email}));
+        entrarNoApp();
+    }catch(e){setAuthMsg('❌ '+e.message,'err');btn.disabled=false;btn.textContent=abaAtiva==='login'?'Entrar':'Criar conta';}
+}
+
+function traduzirErro(msg){
+    if(msg.includes('Invalid login'))return'E-mail ou senha incorretos.';
+    if(msg.includes('Email not confirmed'))return'Confirme seu e-mail antes de entrar.';
+    if(msg.includes('User already registered'))return'E-mail já cadastrado.';
+    if(msg.includes('rate limit'))return'Muitas tentativas. Aguarde.';
+    return msg;
+}
+
+async function esqueceuSenha(){
+    const email=document.getElementById('authEmail').value.trim();
+    if(!email){setAuthMsg('Digite seu e-mail primeiro.','info');return;}
+    await fetch(APP.url+'/auth/v1/recover',{method:'POST',headers:{'Content-Type':'application/json','apikey':APP.key},body:JSON.stringify({email})});
+    setAuthMsg('📧 E-mail de recuperação enviado!','ok');
+}
+
+async function renovarToken(){
+    const s=JSON.parse(localStorage.getItem('adega_sess')||'null');
+    if(!s?.refresh) return false;
+    try{
+        const r=await fetch(APP.url+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{'Content-Type':'application/json','apikey':APP.key},body:JSON.stringify({refresh_token:s.refresh})});
+        if(!r.ok) return false;
+        const data=await r.json();
+        APP.token=data.access_token;APP.userId=data.user.id;APP.userEmail=data.user.email;
+        localStorage.setItem('adega_sess',JSON.stringify({token:data.access_token,refresh:data.refresh_token,exp:Date.now()+(data.expires_in||3600)*1000,uid:data.user.id,email:data.user.email}));
+        return true;
+    }catch(e){return false;}
+}
+
+async function logout(){
+    try{await fetch(APP.url+'/auth/v1/logout',{method:'POST',headers:{'apikey':APP.key,'Authorization':'Bearer '+APP.token}});}catch(e){}
+    localStorage.removeItem('adega_sess');
+    APP.token='';APP.userId='';APP.userEmail='';APP.vinhos=[];
+    mostrarLogin();
+}
+
+function mostrarLogin(){
+    document.getElementById('authScreen').classList.add('show');
+    document.getElementById('appScreen').classList.remove('show');
+    document.getElementById('btnAuth').disabled=false;
+    document.getElementById('btnAuth').textContent='Entrar';
+    setAuthMsg('','');
+}
+
+function entrarNoApp(){
+    document.getElementById('authScreen').classList.remove('show');
+    document.getElementById('appScreen').classList.add('show');
+    document.getElementById('headerUser').textContent='👤 '+APP.userEmail;
+    carregarVinhos();
+}
+
+// ═══════════════════════════════════
+// CRUD SUPABASE
+// ═══════════════════════════════════
+function h(){ return{'Content-Type':'application/json','apikey':APP.key,'Authorization':'Bearer '+APP.token}; }
+function hDb(){ return{...h(),'Prefer':'return=representation'}; }
+function setDbStatus(e,m){ document.getElementById('dbDot').className='db-dot '+e;document.getElementById('dbStatusText').textContent=m; }
+
+async function carregarVinhos(){
+    setDbStatus('loading','Buscando dados...');
+    try{
+        const r=await fetch(APP.url+'/rest/v1/adega?order=criado_em.desc',{headers:hDb()});
+        if(!r.ok) throw new Error('HTTP '+r.status);
+        APP.vinhos=await r.json();
+        setDbStatus('ok',APP.vinhos.length+' vinho(s)');
+        renderizar();
+    }catch(e){
+        setDbStatus('err','Erro: '+e.message);
+        document.getElementById('lista').innerHTML=`<div class="empty-state"><p>⚠️ Erro ao carregar dados.</p></div>`;
+    }
+}
+
+function montarBody(d){
+    return{
+        user_id:APP.userId,
+        nome:d.nome,
+        uva:d.uva||null,
+        local:d.local||null,
+        safra:d.safra||null,
+        valor:d.valor?parseFloat(d.valor):null,
+        data:d.data||null,
+        quantidade:parseInt(d.quantidade)||0,
+        nota:parseInt(d.nota)||0,
+        avaliacao:d.avaliacao||null,
+        foto:d.foto||null,
+        foto_hd:d.fotoHD||null
+    };
+}
+
+async function inserirVinho(d){
+    const r=await fetch(APP.url+'/rest/v1/adega',{method:'POST',headers:hDb(),body:JSON.stringify(montarBody(d))});
+    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.message||'Erro ao inserir');}
+    return(await r.json())[0];
+}
+
+async function atualizarVinho(id,d){
+    const r=await fetch(APP.url+'/rest/v1/adega?id=eq.'+id,{method:'PATCH',headers:hDb(),body:JSON.stringify(montarBody(d))});
+    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.message||'Erro ao atualizar');}
+    return(await r.json())[0];
+}
+
+async function deletarVinho(id){
+    const r=await fetch(APP.url+'/rest/v1/adega?id=eq.'+id,{method:'DELETE',headers:{...h(),'Prefer':'return=minimal'}});
+    if(!r.ok) throw new Error('Erro ao deletar');
+}
+
+async function ajustarQtd(id, delta){
+    const v=APP.vinhos.find(x=>x.id==id); if(!v) return;
+    const novaQtd=Math.max(0,(parseInt(v.quantidade)||0)+delta);
+    const r=await fetch(APP.url+'/rest/v1/adega?id=eq.'+id,{method:'PATCH',headers:hDb(),body:JSON.stringify({quantidade:novaQtd})});
+    if(r.ok){
+        APP.vinhos=APP.vinhos.map(x=>x.id==id?{...x,quantidade:novaQtd}:x);
+        renderizar();
+    }
+}
+
+// ═══════════════════════════════════
+// RENDER
+// ═══════════════════════════════════
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmtData(d){return d?d.split('-').reverse().join('/'):'–'}
+function renderStars(n){ n=n||0; return `<span style="color:#f0a500">${'⭐'.repeat(n)}</span><span style="opacity:0.2">${'⭐'.repeat(5-n)}</span>`; }
+
+function renderizar(){
+    const lista=document.getElementById('lista');
+    const busca=(document.getElementById('buscaTexto').value||'').toLowerCase();
+    const ordem=document.getElementById('ordemLista').value;
+    const status=document.getElementById('filtroStatus').value;
+
+    let filtrados=[...APP.vinhos].filter(v=>{
+        const t=((v.nome||'')+(v.uva||'')+(v.local||'')).toLowerCase();
+        const loc=(v.local||'').toLowerCase();
+        let ms=true;
+        if(status==='estoque') ms=loc==='estoque';
+        if(status==='consumidos') ms=loc!=='estoque';
+        return t.includes(busca)&&ms;
+    });
+
+    filtrados.sort((a,b)=>{
+        if(ordem==='dataDesc') return new Date(b.data||0)-new Date(a.data||0);
+        if(ordem==='dataAsc') return new Date(a.data||0)-new Date(b.data||0);
+        if(ordem==='notaDesc') return (b.nota||0)-(a.nota||0);
+        return 0;
+    });
+
+    // Stats (sobre todos os vinhos, não filtrados)
+    const emEstoque=APP.vinhos.filter(v=>(v.local||'').toLowerCase()==='estoque');
+    const totalQtd=emEstoque.reduce((s,v)=>s+(parseInt(v.quantidade)||0),0);
+    const totalVal=emEstoque.reduce((s,v)=>s+(parseFloat(v.valor)||0)*(parseInt(v.quantidade)||0),0);
+    const comNota=APP.vinhos.filter(v=>v.nota&&Number(v.nota)>0);
+    const media=comNota.length?(comNota.reduce((s,v)=>s+Number(v.nota),0)/comNota.length).toFixed(1):null;
+    document.getElementById('sQtd').textContent=totalQtd+' garrafas';
+    document.getElementById('sNota').textContent=media?media+' ★':'–';
+    document.getElementById('sValor').textContent='R$ '+totalVal.toFixed(2).replace('.',',');
+
+    if(!filtrados.length){
+        lista.innerHTML=`<div class="empty-state"><p style="font-size:40px">🍷</p><p style="margin-top:12px">Nenhum vinho encontrado.<br>Toque em <strong>+ Adicionar</strong>!</p></div>`;
+        return;
+    }
+
+    window._fotoMap={};
+    window._fotoHDMap={};
+    filtrados.forEach(v=>{
+        if(v.foto) window._fotoMap[v.id]=v.foto;
+        if(v.foto_hd) window._fotoHDMap[v.id]=v.foto_hd;
+    });
+
+    lista.innerHTML=filtrados.map(v=>{
+        const consumido=(v.local||'').toLowerCase()!=='estoque';
+        const fotoEl=v.foto
+            ?`<div class="wine-foto-wrap" onclick="abrirLightbox(${v.id})" title="Ver foto maior">
+                <img class="wine-foto" src="${v.foto}" alt="" onerror="this.outerHTML='<div class=wine-foto-ph>🍷</div>'">
+                <span class="wine-foto-zoom">🔍</span>
+              </div>`
+            :`<div class="wine-foto-ph">🍷</div>`;
+        return`<div class="wine-card">
+            <div class="wine-card-inner">
+                ${fotoEl}
+                <div class="wine-body">
+                    <div class="wine-nome">${esc(v.nome)}</div>
+                    <div class="wine-sub">${[v.uva,v.safra].filter(Boolean).map(esc).join(' · ')}</div>
+                    <div class="wine-stars">${renderStars(v.nota)}</div>
+                    <div class="wine-meta">
+                        📍 ${esc(v.local||'Sem local')} &nbsp;🗂 ${v.quantidade||0} un.<br>
+                        📅 ${fmtData(v.data)} &nbsp;<span class="wine-valor">R$ ${(parseFloat(v.valor)||0).toFixed(2).replace('.',',')}</span>
+                    </div>
+                    ${v.avaliacao?`<div class="wine-aval">"${esc(v.avaliacao)}"</div>`:''}
+                    <div class="wine-qty">
+                        <button class="btn-qty" onclick="ajustarQtd(${v.id},-1)">−</button>
+                        <span class="qty-val">${v.quantidade||0}</span>
+                        <button class="btn-qty" onclick="ajustarQtd(${v.id},+1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="wine-footer">
+                ${consumido?'<span class="badge-cons">🍷 Consumido</span>':'<span></span>'}
+                <div class="wine-actions">
+                    <button class="btn-sm" style="background:#5a9e6f" onclick="prepararEdicao(${v.id})">Editar</button>
+                    <button class="btn-sm" style="background:#dc3545" onclick="excluir(${v.id})">Apagar</button>
+                    <button class="btn-sm" style="background:#6c757d" onclick="duplicar(${v.id})">Duplicar</button>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ═══════════════════════════════════
+// DRAWER
+// ═══════════════════════════════════
+function abrirDrawer(){ limparForm(); document.getElementById('overlay').classList.add('open'); }
+function fecharDrawer(){ document.getElementById('overlay').classList.remove('open'); limparForm(); }
+function fecharDrawerFora(e){ if(e.target===document.getElementById('overlay')) fecharDrawer(); }
+
+function setNota(n){
+    notaSel=n;
+    document.getElementById('nota').value=n;
+    document.querySelectorAll('#starsRow span').forEach((s,i)=>s.classList.toggle('on',i<n));
+}
+
+function limparForm(){
+    ['wineId','nome','uva','local','safra','valor','avaliacao'].forEach(k=>document.getElementById(k).value='');
+    document.getElementById('data').value=new Date().toISOString().split('T')[0];
+    document.getElementById('quantidade').value='1';
+    document.getElementById('ocrStatus').textContent='';
+    document.getElementById('fotoSizeInfo').textContent='';
+    const p=document.getElementById('fotoPreview'); p.style.display='none'; p.src='';
+    fotoBase64=''; fotoHDBase64='';
+    notaSel=0;
+    document.getElementById('nota').value='0';
+    document.querySelectorAll('#starsRow span').forEach(s=>s.classList.remove('on'));
+    document.getElementById('btnSalvar').textContent='GRAVAR VINHO';
+    document.getElementById('btnSalvar').disabled=false;
+    document.getElementById('btnCancelar').style.display='none';
+    document.getElementById('drawerTitle').textContent='Adicionar Vinho';
+}
+
+window.prepararEdicao=function(id){
+    const v=APP.vinhos.find(x=>x.id==id); if(!v) return;
+    limparForm();
+    document.getElementById('wineId').value=v.id;
+    document.getElementById('nome').value=v.nome||'';
+    document.getElementById('uva').value=v.uva||'';
+    document.getElementById('local').value=v.local||'';
+    document.getElementById('safra').value=v.safra||'';
+    document.getElementById('valor').value=v.valor||'';
+    document.getElementById('data').value=v.data||'';
+    document.getElementById('quantidade').value=v.quantidade||1;
+    document.getElementById('avaliacao').value=v.avaliacao||'';
+    fotoBase64=v.foto||'';
+    fotoHDBase64=v.foto_hd||'';
+    if(v.foto){ const p=document.getElementById('fotoPreview'); p.src=v.foto; p.style.display='block'; }
+    if(v.foto_hd){
+        const kbHD=Math.round(v.foto_hd.length*0.75/1024);
+        const kbThumb=v.foto?Math.round(v.foto.length*0.75/1024):0;
+        document.getElementById('fotoSizeInfo').textContent=`✅ Thumb: ~${kbThumb} KB · HD: ~${kbHD} KB`;
+    }
+    setNota(v.nota||0);
+    document.getElementById('drawerTitle').textContent='Editar Vinho';
+    document.getElementById('btnSalvar').textContent='ATUALIZAR';
+    document.getElementById('btnCancelar').style.display='block';
+    document.getElementById('overlay').classList.add('open');
+};
+
+// ═══════════════════════════════════
+// SALVAR
+// ═══════════════════════════════════
+async function salvar(){
+    const nome=document.getElementById('nome').value.trim();
+    if(!nome){alert('O nome é obrigatório!');return;}
+    if(!APP.token||!APP.userId){alert('Sessão expirada. Faça login novamente.');logout();return;}
+    const btn=document.getElementById('btnSalvar');
+    btn.disabled=true; btn.textContent='Salvando...';
+    const idEdicao=document.getElementById('wineId').value;
+    const dados={
+        nome, uva:document.getElementById('uva').value,
+        local:document.getElementById('local').value,
+        safra:document.getElementById('safra').value,
+        valor:document.getElementById('valor').value,
+        data:document.getElementById('data').value,
+        quantidade:document.getElementById('quantidade').value,
+        nota:notaSel,
+        avaliacao:document.getElementById('avaliacao').value,
+        foto:fotoBase64, fotoHD:fotoHDBase64
+    };
+    try{
+        if(idEdicao){
+            const upd=await atualizarVinho(idEdicao,dados);
+            APP.vinhos=APP.vinhos.map(v=>v.id==idEdicao?{...v,...upd}:v);
+        }else{
+            const novo=await inserirVinho(dados);
+            APP.vinhos.unshift(novo);
+            // Grava nome na tabela compartilhada em background (não bloqueia)
+            gravarNomeVinho(dados.nome, dados.uva, dados.safra);
+        }
+        setDbStatus('ok',APP.vinhos.length+' vinho(s)');
+        fecharDrawer(); renderizar();
+    }catch(e){
+        alert('❌ Erro ao salvar: '+e.message);
+        btn.disabled=false; btn.textContent=idEdicao?'ATUALIZAR':'GRAVAR VINHO';
+    }
+}
+
+window.excluir=async function(id){
+    if(!confirm('Excluir este vinho?')) return;
+    try{ await deletarVinho(id); APP.vinhos=APP.vinhos.filter(x=>x.id!=id); setDbStatus('ok',APP.vinhos.length+' vinho(s)'); renderizar(); }
+    catch(e){ alert('❌ '+e.message); }
+};
+
+window.duplicar=async function(id){
+    const v=APP.vinhos.find(x=>x.id==id); if(!v) return;
+    const dados={nome:v.nome,uva:v.uva,local:v.local,safra:v.safra,valor:v.valor,data:new Date().toISOString().split('T')[0],quantidade:v.quantidade,nota:v.nota,avaliacao:v.avaliacao,foto:v.foto,fotoHD:v.foto_hd};
+    try{ const novo=await inserirVinho(dados); APP.vinhos.unshift(novo); setDbStatus('ok',APP.vinhos.length+' vinho(s)'); renderizar(); }
+    catch(e){ alert('❌ '+e.message); }
+};
+
+// ═══════════════════════════════════
+// COMPRESSÃO
+// ═══════════════════════════════════
+function comprimirImagem(file, maxPx, q){
+    return new Promise((res,rej)=>{
+        const r=new FileReader();
+        r.onerror=rej;
+        r.onload=ev=>{
+            const img=new Image();
+            img.onerror=rej;
+            img.onload=()=>{
+                let w=img.width,h=img.height;
+                if(w>h){if(w>maxPx){h=h*maxPx/w;w=maxPx;}}
+                else{if(h>maxPx){w=w*maxPx/h;h=maxPx;}}
+                const c=document.createElement('canvas'); c.width=w; c.height=h;
+                c.getContext('2d').drawImage(img,0,0,w,h);
+                res(c.toDataURL('image/jpeg',q));
+            };
+            img.src=ev.target.result;
+        };
+        r.readAsDataURL(file);
+    });
+}
+
+// ═══════════════════════════════════
+// BACKUP
+// ═══════════════════════════════════
+window.exportarBackup=function(){
+    if(!APP.vinhos.length){alert('Sem dados.');return;}
+    const blob=new Blob([JSON.stringify(APP.vinhos,null,2)],{type:'application/json'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='backup_adega_'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+};
+
+window.importarBackup=async function(e){
+    const reader=new FileReader();
+    reader.onload=async ev=>{
+        try{
+            const dados=JSON.parse(ev.target.result);
+            if(!Array.isArray(dados)) throw new Error('Formato inválido');
+            if(!confirm(`Importar ${dados.length} registros?`)) return;
+            let ok=0,err=0;
+            for(const item of dados){
+                try{
+                    await inserirVinho({nome:item.nome,uva:item.uva,local:item.local,safra:item.safra,valor:item.valor,data:item.data,quantidade:item.quantidade,nota:item.nota,avaliacao:item.avaliacao,foto:item.foto,fotoHD:item.foto_hd||''});
+                    ok++;
+                }catch(e2){err++;}
+            }
+            alert(`✅ ${ok} importados, ${err} erros.`);
+            await carregarVinhos();
+        }catch(err){alert('Arquivo inválido: '+err.message);}
+    };
+    reader.readAsText(e.target.files[0]);
+};
+
+// ═══════════════════════════════════
+// INIT
+// ═══════════════════════════════════
+document.getElementById('data').value = new Date().toISOString().split('T')[0];
+
+async function iniciar(){
+    if(!carregarCfg()){abrirSetup();return;}
+    const s=JSON.parse(localStorage.getItem('adega_sess')||'null');
+    if(s?.token&&s?.uid){
+        if(Date.now()<s.exp){APP.token=s.token;APP.userId=s.uid;APP.userEmail=s.email||'';entrarNoApp();return;}
+        if(await renovarToken()){entrarNoApp();return;}
+    }
+    mostrarLogin();
+}
+
+window.onload=iniciar;
+</script>
+</body>
+</html>
